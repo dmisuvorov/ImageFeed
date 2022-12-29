@@ -43,6 +43,18 @@
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                     <state key="normal" image="like_button_on"/>
                                                 </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UdH-0k-8nh" customClass="VerticalGradientView" customModule="ImageFeed">
+                                                    <rect key="frame" x="16" y="192" width="382" height="28"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                            <color key="value" name="YP Black (Alpha 0)"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="finishColor">
+                                                            <color key="value" name="YP Black"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27 августа 2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feJ-oS-tsn" userLabel="Date Label">
                                                     <rect key="frame" x="24" y="196" width="101.5" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -52,10 +64,14 @@
                                             </subviews>
                                             <color key="backgroundColor" name="YP Black"/>
                                             <constraints>
+                                                <constraint firstItem="UdH-0k-8nh" firstAttribute="leading" secondItem="4zu-pd-hVT" secondAttribute="leading" id="7Am-Vq-NEi"/>
+                                                <constraint firstItem="4zu-pd-hVT" firstAttribute="trailing" secondItem="UdH-0k-8nh" secondAttribute="trailing" id="ACS-20-hE5"/>
                                                 <constraint firstItem="4zu-pd-hVT" firstAttribute="trailing" secondItem="FwU-7A-e1d" secondAttribute="trailing" id="ADD-RO-rFm"/>
                                                 <constraint firstItem="4zu-pd-hVT" firstAttribute="leading" secondItem="3Y5-Gj-UDi" secondAttribute="leading" constant="16" id="CBi-LI-tAX"/>
                                                 <constraint firstItem="feJ-oS-tsn" firstAttribute="leading" secondItem="4zu-pd-hVT" secondAttribute="leading" constant="8" id="MTv-EB-2EZ"/>
+                                                <constraint firstItem="4zu-pd-hVT" firstAttribute="bottom" secondItem="UdH-0k-8nh" secondAttribute="bottom" id="TFC-qc-REZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="4zu-pd-hVT" secondAttribute="trailing" constant="16" id="Tm9-sf-s2l"/>
+                                                <constraint firstItem="UdH-0k-8nh" firstAttribute="top" secondItem="feJ-oS-tsn" secondAttribute="top" constant="-4" id="YwG-Sv-y2a"/>
                                                 <constraint firstItem="4zu-pd-hVT" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="feJ-oS-tsn" secondAttribute="trailing" constant="8" id="cGz-Yp-dEf"/>
                                                 <constraint firstAttribute="bottom" secondItem="4zu-pd-hVT" secondAttribute="bottom" constant="4" id="fXq-WL-BWi"/>
                                                 <constraint firstItem="FwU-7A-e1d" firstAttribute="top" secondItem="4zu-pd-hVT" secondAttribute="top" id="mWX-bP-DlD"/>
@@ -99,6 +115,9 @@
         <image name="like_button_on" width="42" height="42"/>
         <namedColor name="YP Black">
             <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="YP Black (Alpha 0)">
+            <color red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="YP White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
