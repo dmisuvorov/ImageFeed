@@ -8,7 +8,7 @@
 import UIKit
 
 class ImageListViewController: UIViewController {
-    private let photosName: [String] = Array(0..<20).map{ "\($0)" }
+    private let photoNames: [String] = Array(0..<20).map{ "\($0)" }
     
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -29,7 +29,7 @@ extension ImageListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let image = UIImage(named: photosName[indexPath.row]) else {
+        guard let image = UIImage(named: photoNames[indexPath.row]) else {
             return 0
         }
         let imageInsets = UIEdgeInsets(top: 4, left: 16, bottom: 4, right: 16)
@@ -44,7 +44,7 @@ extension ImageListViewController: UITableViewDelegate {
 extension ImageListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return photosName.count
+        return photoNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,7 +59,7 @@ extension ImageListViewController: UITableViewDataSource {
     }
     
     private func configCell(for cell: ImagesListCell, with indexPath: IndexPath) {
-        guard let image = UIImage(named: photosName[indexPath.row]) else {
+        guard let image = UIImage(named: photoNames[indexPath.row]) else {
             return
         }
 
