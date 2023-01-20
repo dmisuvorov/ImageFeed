@@ -11,4 +11,7 @@ import UIKit
 class SingleImageViewController: UIViewController {
     @IBOutlet var imageView: UIImageView!
     
+    @IBAction func didTapBackButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }

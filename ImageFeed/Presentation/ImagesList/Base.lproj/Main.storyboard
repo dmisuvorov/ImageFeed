@@ -12,7 +12,7 @@
         <!--Single Image View Controller-->
         <scene sceneID="55g-C8-C29">
             <objects>
-                <viewController id="LDs-qQ-MEq" userLabel="Single Image View Controller" customClass="SingleImageViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="LDs-qQ-MEq" userLabel="Single Image View Controller" customClass="SingleImageViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zw1-Q6-xzj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,14 +20,25 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="u4Z-E9-nru">
                                 <rect key="frame" x="-8" y="-8" width="430" height="912"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5E-y5-aUy">
+                                <rect key="frame" x="8" y="56" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="D8I-fo-6Pe"/>
+                                    <constraint firstAttribute="height" constant="48" id="zBF-ze-X1X"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="nav_back_button_white"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Hs-kH-8OO"/>
                         <color key="backgroundColor" name="YP Black"/>
                         <constraints>
-                            <constraint firstItem="6Hs-kH-8OO" firstAttribute="bottom" secondItem="u4Z-E9-nru" secondAttribute="bottomMargin" id="CpI-OZ-hOI"/>
-                            <constraint firstItem="u4Z-E9-nru" firstAttribute="topMargin" secondItem="6Hs-kH-8OO" secondAttribute="top" id="ISl-rE-eN1"/>
-                            <constraint firstItem="u4Z-E9-nru" firstAttribute="leadingMargin" secondItem="6Hs-kH-8OO" secondAttribute="leading" id="Il9-gA-F5s"/>
-                            <constraint firstItem="6Hs-kH-8OO" firstAttribute="trailing" secondItem="u4Z-E9-nru" secondAttribute="trailingMargin" id="NoQ-n9-Rai"/>
+                            <constraint firstAttribute="bottom" secondItem="u4Z-E9-nru" secondAttribute="bottomMargin" constant="34" id="CpI-OZ-hOI"/>
+                            <constraint firstItem="e5E-y5-aUy" firstAttribute="leading" secondItem="6Hs-kH-8OO" secondAttribute="leading" constant="8" id="GOd-qv-Rma"/>
+                            <constraint firstItem="u4Z-E9-nru" firstAttribute="topMargin" secondItem="zw1-Q6-xzj" secondAttribute="top" constant="48" id="ISl-rE-eN1"/>
+                            <constraint firstItem="u4Z-E9-nru" firstAttribute="leadingMargin" secondItem="zw1-Q6-xzj" secondAttribute="leading" id="Il9-gA-F5s"/>
+                            <constraint firstAttribute="trailing" secondItem="u4Z-E9-nru" secondAttribute="trailingMargin" id="NoQ-n9-Rai"/>
+                            <constraint firstItem="e5E-y5-aUy" firstAttribute="top" secondItem="6Hs-kH-8OO" secondAttribute="top" constant="8" id="fUd-Cm-FWw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MP3-tB-ZMG"/>
@@ -37,7 +48,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uet-2N-EEu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2503" y="-1"/>
+            <point key="canvasLocation" x="2489.8550724637685" y="-121.20535714285714"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vtp-OY-ZdV">
@@ -134,7 +145,7 @@
                                             <outlet property="cellImage" destination="4zu-pd-hVT" id="mGT-7S-h0v"/>
                                             <outlet property="dateLabel" destination="feJ-oS-tsn" id="va3-rc-cP3"/>
                                             <outlet property="likeButton" destination="FwU-7A-e1d" id="uQd-gs-iFN"/>
-                                            <segue destination="LDs-qQ-MEq" kind="show" id="ZWz-rC-CIW"/>
+                                            <segue destination="LDs-qQ-MEq" kind="presentation" id="ZWz-rC-CIW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -263,6 +274,7 @@
         <image name="avatar" width="70" height="70"/>
         <image name="like_button_on" width="42" height="42"/>
         <image name="logout_button" width="24" height="24"/>
+        <image name="nav_back_button_white" width="24" height="24"/>
         <image name="tab_editorial_active" width="15" height="15"/>
         <image name="tab_profile_active" width="30" height="30"/>
         <namedColor name="YP Black">
