@@ -207,7 +207,7 @@
         <!--Profile-->
         <scene sceneID="RPK-JA-0CH">
             <objects>
-                <viewController id="J2w-2k-eJI" userLabel="Profile" sceneMemberID="viewController">
+                <viewController id="J2w-2k-eJI" userLabel="Profile" customClass="ProfileViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Ao-dH-3ck">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
