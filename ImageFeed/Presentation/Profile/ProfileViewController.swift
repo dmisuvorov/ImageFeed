@@ -9,4 +9,13 @@ import UIKit
 
 class ProfileViewController : UIViewController {
     
+    private lazy var avatarImageView: UIImageView = {
+        let avatarImageView = UIImageView()
+        avatarImageView.image = UIImage(named: "avatar")
+        avatarImageView.backgroundColor = UIColor.ypBlack
+        avatarImageView.contentMode = .scaleAspectFit
+        avatarImageView.layer.cornerRadius = 35
+        avatarImageView.layer.masksToBounds = true
+        return avatarImageView
+    }()
 }
