@@ -87,14 +87,15 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lrn-va-TBA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="YP Black"/>
+                        <color key="selectedImageTintColor" name="YP White"/>
                         <tabBarAppearance key="standardAppearance">
                             <color key="backgroundColor" name="YP Black"/>
                         </tabBarAppearance>
                     </tabBar>
                     <connections>
-                        <segue destination="J2w-2k-eJI" kind="relationship" relationship="viewControllers" id="Ve1-Vv-fbv"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="nhX-pk-Dl4"/>
+                        <segue destination="J2w-2k-eJI" kind="relationship" relationship="viewControllers" id="Ve1-Vv-fbv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="koA-jI-Sji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -227,7 +228,7 @@
         <image name="like_button_on" width="42" height="42"/>
         <image name="nav_back_button_white" width="24" height="24"/>
         <image name="share_button" width="50" height="50"/>
-        <image name="tab_editorial_active" width="15" height="15"/>
+        <image name="tab_editorial_active" width="30" height="30"/>
         <image name="tab_profile_active" width="30" height="30"/>
         <namedColor name="YP Black">
             <color red="0.10199999809265137" green="0.10599999874830246" blue="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
