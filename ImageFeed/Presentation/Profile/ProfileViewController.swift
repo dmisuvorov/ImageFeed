@@ -18,4 +18,10 @@ class ProfileViewController : UIViewController {
         avatarImageView.layer.masksToBounds = true
         return avatarImageView
     }()
+    
+    private lazy var nameLabel: UILabel = {
+        let nameLabel = UILabel()
+        nameLabel.text = "Екатерина Новикова"
+        
+    }
 }
