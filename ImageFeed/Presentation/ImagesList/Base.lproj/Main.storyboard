@@ -113,7 +113,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" name="YP Black"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImagesListCell" rowHeight="224" id="TIK-Nv-4k3" userLabel="ImageListCell" customClass="ImagesListCell" customModule="ImageFeed">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImagesListCell" rowHeight="224" id="TIK-Nv-4k3" customClass="ImagesListCell" customModule="ImageFeed">
                                         <rect key="frame" x="0.0" y="50" width="414" height="224"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TIK-Nv-4k3" id="3Y5-Gj-UDi">
@@ -175,7 +175,6 @@
                                             <outlet property="cellImage" destination="4zu-pd-hVT" id="mGT-7S-h0v"/>
                                             <outlet property="dateLabel" destination="feJ-oS-tsn" id="va3-rc-cP3"/>
                                             <outlet property="likeButton" destination="FwU-7A-e1d" id="uQd-gs-iFN"/>
-                                            <segue destination="LDs-qQ-MEq" kind="presentation" id="ZWz-rC-CIW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -198,6 +197,7 @@
                     <navigationItem key="navigationItem" id="CJG-7r-Sli"/>
                     <connections>
                         <outlet property="tableView" destination="8kb-xS-cUy" id="Vsx-vE-ayN"/>
+                        <segue destination="LDs-qQ-MEq" kind="presentation" identifier="ShowSingleImage" id="YsG-DO-B3z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
