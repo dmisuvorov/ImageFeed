@@ -22,6 +22,7 @@
 		62EB1D9F297E78D4002A198E /* YSDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62EB1D9C297E78D4002A198E /* YSDisplay-Medium.ttf */; };
 		62EB1DA0297E78D4002A198E /* YSDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62EB1D9D297E78D4002A198E /* YSDisplay-Regular.ttf */; };
 		62EB1DA2297E7968002A198E /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1DA1297E7968002A198E /* Fonts.swift */; };
+		62EB1DA4297E8B98002A198E /* UIView+LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1DA3297E8B98002A198E /* UIView+LayoutConstraint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		62EB1D9C297E78D4002A198E /* YSDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YSDisplay-Medium.ttf"; sourceTree = "<group>"; };
 		62EB1D9D297E78D4002A198E /* YSDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YSDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		62EB1DA1297E7968002A198E /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		62EB1DA3297E8B98002A198E /* UIView+LayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutConstraint.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			children = (
 				62EB1D97297DE071002A198E /* Colors.swift */,
 				62EB1DA1297E7968002A198E /* Fonts.swift */,
+				62EB1DA3297E8B98002A198E /* UIView+LayoutConstraint.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62C37877294CA31F0014BCD7 /* ImageListViewController.swift in Sources */,
+				62EB1DA4297E8B98002A198E /* UIView+LayoutConstraint.swift in Sources */,
 				62EB1D98297DE072002A198E /* Colors.swift in Sources */,
 				62CF1E69295B98FD006D9581 /* ImagesListCell.swift in Sources */,
 				62C37873294CA31F0014BCD7 /* AppDelegate.swift in Sources */,

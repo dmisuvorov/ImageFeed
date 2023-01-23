@@ -51,4 +51,37 @@ class ProfileViewController : UIViewController {
         logoutButton.tintColor = UIColor.ypRed
         return logoutButton
     }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+    }
+    
+    private func configureUI() {
+        self.view.backgroundColor = UIColor.ypBlack
+        self.view.addSubview(self.avatarImageView, constraints: [
+            equal(\.heightAnchor, to: 70),
+            equal(\.widthAnchor, to: 70),
+            equal(\.topAnchor, \.safeAreaLayoutGuide.topAnchor, to: 32),
+            equal(\.leadingAnchor, to: 16)
+        ])
+        self.view.addSubview(self.nameLabel, constraints: [
+            equal(\.topAnchor, avatarImageView.bottomAnchor, to: 8),
+            equal(\.leadingAnchor, to: 16)
+        ])
+        self.view.addSubview(self.nicknameLabel, constraints: [
+            equal(\.topAnchor, nameLabel.bottomAnchor, to: 8),
+            equal(\.leadingAnchor, to: 16)
+        ])
+        self.view.addSubview(self.statusLabel, constraints: [
+            equal(\.topAnchor, nicknameLabel.bottomAnchor, to: 8),
+            equal(\.leadingAnchor, to: 16)
+        ])
+        self.view.addSubview(self.logoutButton, constraints: [
+            equal(\.heightAnchor, to: 24),
+            equal(\.widthAnchor, to: 24),
+            equal(\.topAnchor, \.safeAreaLayoutGuide.topAnchor, to: 32),
+            equal(\.trailingAnchor, to: -16)
+        ])
+    }
 }
