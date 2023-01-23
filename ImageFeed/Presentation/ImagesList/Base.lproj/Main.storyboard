@@ -20,7 +20,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ufD-w5-Qo5">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="u4Z-E9-nru">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="u4Z-E9-nru">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                     </imageView>
                                 </subviews>
@@ -28,7 +28,7 @@
                                     <constraint firstItem="u4Z-E9-nru" firstAttribute="leading" secondItem="ufD-w5-Qo5" secondAttribute="leading" id="14F-PL-PdK"/>
                                     <constraint firstAttribute="bottom" secondItem="u4Z-E9-nru" secondAttribute="bottom" id="BXs-T0-Wmu"/>
                                     <constraint firstAttribute="trailing" secondItem="u4Z-E9-nru" secondAttribute="trailing" id="SVb-Wr-5my"/>
-                                    <constraint firstItem="u4Z-E9-nru" firstAttribute="topMargin" secondItem="ufD-w5-Qo5" secondAttribute="top" id="V6B-FT-fFo"/>
+                                    <constraint firstItem="u4Z-E9-nru" firstAttribute="top" secondItem="ufD-w5-Qo5" secondAttribute="top" id="V6B-FT-fFo"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="fPX-Ic-E79"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="X2W-ZA-IR4"/>
@@ -78,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uet-2N-EEu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2489.8550724637685" y="-121.20535714285714"/>
+            <point key="canvasLocation" x="1799" y="-78"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="vtp-OY-ZdV">
