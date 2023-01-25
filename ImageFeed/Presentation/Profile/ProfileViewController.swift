@@ -80,7 +80,7 @@ class ProfileViewController : UIViewController {
         self.view.addSubview(self.logoutButton, constraints: [
             equal(\.heightAnchor, to: 24),
             equal(\.widthAnchor, to: 24),
-            equal(\.topAnchor, \.safeAreaLayoutGuide.topAnchor, to: 32),
+            equal(\.topAnchor, \.safeAreaLayoutGuide.topAnchor, to: 56),
             equal(\.trailingAnchor, to: -16)
         ])
     }
