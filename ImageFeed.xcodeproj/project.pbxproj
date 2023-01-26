@@ -15,6 +15,14 @@
 		62C3787F294CA3220014BCD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C3787D294CA3220014BCD7 /* LaunchScreen.storyboard */; };
 		62CF1E69295B98FD006D9581 /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CF1E68295B98FD006D9581 /* ImagesListCell.swift */; };
 		62E3D528295DD04B007EB771 /* VerticalGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E3D527295DD04B007EB771 /* VerticalGradientView.swift */; };
+		62EB1D9229756285002A198E /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D9129756285002A198E /* SingleImageViewController.swift */; };
+		62EB1D95297DD6AE002A198E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D94297DD6AE002A198E /* ProfileViewController.swift */; };
+		62EB1D98297DE072002A198E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D97297DE071002A198E /* Colors.swift */; };
+		62EB1D9E297E78D4002A198E /* YSDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62EB1D9B297E78D4002A198E /* YSDisplay-Bold.ttf */; };
+		62EB1D9F297E78D4002A198E /* YSDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62EB1D9C297E78D4002A198E /* YSDisplay-Medium.ttf */; };
+		62EB1DA0297E78D4002A198E /* YSDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62EB1D9D297E78D4002A198E /* YSDisplay-Regular.ttf */; };
+		62EB1DA2297E7968002A198E /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1DA1297E7968002A198E /* Fonts.swift */; };
+		62EB1DA4297E8B98002A198E /* UIView+LayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1DA3297E8B98002A198E /* UIView+LayoutConstraint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +36,14 @@
 		62C37880294CA3220014BCD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62CF1E68295B98FD006D9581 /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 		62E3D527295DD04B007EB771 /* VerticalGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalGradientView.swift; sourceTree = "<group>"; };
+		62EB1D9129756285002A198E /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
+		62EB1D94297DD6AE002A198E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		62EB1D97297DE071002A198E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		62EB1D9B297E78D4002A198E /* YSDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YSDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		62EB1D9C297E78D4002A198E /* YSDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YSDisplay-Medium.ttf"; sourceTree = "<group>"; };
+		62EB1D9D297E78D4002A198E /* YSDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "YSDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		62EB1DA1297E7968002A198E /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		62EB1DA3297E8B98002A198E /* UIView+LayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+LayoutConstraint.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +76,8 @@
 		62C37871294CA31F0014BCD7 /* ImageFeed */ = {
 			isa = PBXGroup;
 			children = (
+				62EB1D99297E7882002A198E /* Resources */,
+				62EB1D96297DDAD8002A198E /* Helpers */,
 				62CF1E66295B9611006D9581 /* Presentation */,
 				62C37872294CA31F0014BCD7 /* AppDelegate.swift */,
 				62C37874294CA31F0014BCD7 /* SceneDelegate.swift */,
@@ -73,6 +91,8 @@
 		62CF1E66295B9611006D9581 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				62EB1D93297DD685002A198E /* Profile */,
+				62EB1D902975625F002A198E /* SingleImage */,
 				62E3D526295DD035007EB771 /* Custom */,
 				62CF1E67295B962A006D9581 /* ImagesList */,
 			);
@@ -95,6 +115,50 @@
 				62E3D527295DD04B007EB771 /* VerticalGradientView.swift */,
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		62EB1D902975625F002A198E /* SingleImage */ = {
+			isa = PBXGroup;
+			children = (
+				62EB1D9129756285002A198E /* SingleImageViewController.swift */,
+			);
+			path = SingleImage;
+			sourceTree = "<group>";
+		};
+		62EB1D93297DD685002A198E /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				62EB1D94297DD6AE002A198E /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		62EB1D96297DDAD8002A198E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				62EB1D97297DE071002A198E /* Colors.swift */,
+				62EB1DA1297E7968002A198E /* Fonts.swift */,
+				62EB1DA3297E8B98002A198E /* UIView+LayoutConstraint.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		62EB1D99297E7882002A198E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				62EB1D9A297E78B1002A198E /* Font */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		62EB1D9A297E78B1002A198E /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				62EB1D9B297E78D4002A198E /* YSDisplay-Bold.ttf */,
+				62EB1D9C297E78D4002A198E /* YSDisplay-Medium.ttf */,
+				62EB1D9D297E78D4002A198E /* YSDisplay-Regular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,8 +219,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62EB1DA0297E78D4002A198E /* YSDisplay-Regular.ttf in Resources */,
 				62C3787F294CA3220014BCD7 /* LaunchScreen.storyboard in Resources */,
 				62C3787C294CA3220014BCD7 /* Assets.xcassets in Resources */,
+				62EB1D9E297E78D4002A198E /* YSDisplay-Bold.ttf in Resources */,
+				62EB1D9F297E78D4002A198E /* YSDisplay-Medium.ttf in Resources */,
 				62C3787A294CA31F0014BCD7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,9 +236,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				62C37877294CA31F0014BCD7 /* ImageListViewController.swift in Sources */,
+				62EB1DA4297E8B98002A198E /* UIView+LayoutConstraint.swift in Sources */,
+				62EB1D98297DE072002A198E /* Colors.swift in Sources */,
 				62CF1E69295B98FD006D9581 /* ImagesListCell.swift in Sources */,
 				62C37873294CA31F0014BCD7 /* AppDelegate.swift in Sources */,
 				62C37875294CA31F0014BCD7 /* SceneDelegate.swift in Sources */,
+				62EB1D95297DD6AE002A198E /* ProfileViewController.swift in Sources */,
+				62EB1D9229756285002A198E /* SingleImageViewController.swift in Sources */,
+				62EB1DA2297E7968002A198E /* Fonts.swift in Sources */,
 				62E3D528295DD04B007EB771 /* VerticalGradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
