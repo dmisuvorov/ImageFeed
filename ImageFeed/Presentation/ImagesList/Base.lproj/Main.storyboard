@@ -8,6 +8,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="YSDisplay-Bold.ttf">
+            <string>YSDisplay-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Single Image View Controller-->
         <scene sceneID="55g-C8-C29">
@@ -237,12 +242,33 @@
                                     <constraint firstAttribute="height" constant="60" id="niA-hc-Z90"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwa-px-Afv">
+                                <rect key="frame" x="16" y="724" width="382" height="48"/>
+                                <color key="backgroundColor" name="YP White"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="0gN-4I-5F2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="YSDisplay-Bold" family="YS Display" pointSize="17"/>
+                                <color key="tintColor" name="YP Black"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Войти"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="GTX-FB-kM3"/>
                         <color key="backgroundColor" name="YP Black"/>
                         <constraints>
+                            <constraint firstItem="fwa-px-Afv" firstAttribute="bottom" secondItem="GTX-FB-kM3" secondAttribute="bottom" constant="-90" id="6Bd-I4-cyX"/>
+                            <constraint firstItem="fwa-px-Afv" firstAttribute="leading" secondItem="GTX-FB-kM3" secondAttribute="leading" constant="16" id="Bz8-RC-PXD"/>
+                            <constraint firstItem="GTX-FB-kM3" firstAttribute="trailing" secondItem="fwa-px-Afv" secondAttribute="trailing" constant="16" id="G68-Gq-Z9e"/>
                             <constraint firstItem="0Jt-p0-Lte" firstAttribute="centerY" secondItem="nzm-TJ-xTL" secondAttribute="centerY" id="U2d-c5-ast"/>
                             <constraint firstItem="0Jt-p0-Lte" firstAttribute="centerX" secondItem="nzm-TJ-xTL" secondAttribute="centerX" id="shd-6E-zwg"/>
+                            <constraint firstItem="fwa-px-Afv" firstAttribute="centerX" secondItem="nzm-TJ-xTL" secondAttribute="centerX" id="ul6-eP-I6Z"/>
                         </constraints>
                     </view>
                 </viewController>
