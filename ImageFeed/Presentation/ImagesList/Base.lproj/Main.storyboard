@@ -227,10 +227,10 @@
             </objects>
             <point key="canvasLocation" x="622" y="654"/>
         </scene>
-        <!--View Controller-->
+        <!--Auth View Controller-->
         <scene sceneID="ESc-AB-yWc">
             <objects>
-                <viewController id="0Q6-Mf-LAz" sceneMemberID="viewController">
+                <viewController id="0Q6-Mf-LAz" userLabel="Auth View Controller" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nzm-TJ-xTL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
