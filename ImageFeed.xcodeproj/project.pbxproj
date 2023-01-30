@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62A0205D2987D1280060664E /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A0205C2987D1280060664E /* AuthViewController.swift */; };
 		62C37873294CA31F0014BCD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C37872294CA31F0014BCD7 /* AppDelegate.swift */; };
 		62C37875294CA31F0014BCD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C37874294CA31F0014BCD7 /* SceneDelegate.swift */; };
 		62C37877294CA31F0014BCD7 /* ImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C37876294CA31F0014BCD7 /* ImageListViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		62A0205C2987D1280060664E /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		62C3786F294CA31F0014BCD7 /* ImageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C37872294CA31F0014BCD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62C37874294CA31F0014BCD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		62A0205B2987D1110060664E /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				62A0205C2987D1280060664E /* AuthViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		62C37866294CA31F0014BCD7 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +101,7 @@
 		62CF1E66295B9611006D9581 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				62A0205B2987D1110060664E /* Auth */,
 				62EB1D93297DD685002A198E /* Profile */,
 				62EB1D902975625F002A198E /* SingleImage */,
 				62E3D526295DD035007EB771 /* Custom */,
@@ -235,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62A0205D2987D1280060664E /* AuthViewController.swift in Sources */,
 				62C37877294CA31F0014BCD7 /* ImageListViewController.swift in Sources */,
 				62EB1DA4297E8B98002A198E /* UIView+LayoutConstraint.swift in Sources */,
 				62EB1D98297DE072002A198E /* Colors.swift in Sources */,
