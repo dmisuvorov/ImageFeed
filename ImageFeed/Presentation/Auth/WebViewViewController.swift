@@ -13,6 +13,9 @@ class WebViewViewController : UIViewController {
     
     @IBOutlet private var webView: WKWebView!
     
+    @IBOutlet private var progressView: UIProgressView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
