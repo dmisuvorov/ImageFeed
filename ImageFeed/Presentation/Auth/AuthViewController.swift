@@ -8,5 +8,5 @@
 import UIKit
 
 class AuthViewController : UIViewController {
-    
+    private let showWebViewSegueId = "ShowWebView"
 }
