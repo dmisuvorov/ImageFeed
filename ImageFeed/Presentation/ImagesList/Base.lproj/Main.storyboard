@@ -315,13 +315,27 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkW-pD-c1i">
+                                <rect key="frame" x="9" y="67" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Byf-TX-gfe"/>
+                                    <constraint firstAttribute="width" constant="24" id="y1x-ev-J0e"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="nav_back_button"/>
+                                <connections>
+                                    <action selector="didTapBackButton:" destination="aYS-iT-QtT" eventType="touchUpInside" id="2xl-9N-xAM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oy9-2y-ujy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="a66-xj-QCg" firstAttribute="top" secondItem="iaC-Rh-K78" secondAttribute="top" id="8Pn-2H-Agk"/>
+                            <constraint firstItem="pkW-pD-c1i" firstAttribute="top" secondItem="oy9-2y-ujy" secondAttribute="top" constant="19" id="BNW-qT-0Ou"/>
                             <constraint firstAttribute="trailing" secondItem="a66-xj-QCg" secondAttribute="trailing" id="Y8i-s9-QWY"/>
                             <constraint firstItem="a66-xj-QCg" firstAttribute="leading" secondItem="iaC-Rh-K78" secondAttribute="leading" id="f62-w4-GeF"/>
+                            <constraint firstItem="pkW-pD-c1i" firstAttribute="leading" secondItem="oy9-2y-ujy" secondAttribute="leading" constant="9" id="gTY-Q2-7mv"/>
                             <constraint firstAttribute="bottom" secondItem="a66-xj-QCg" secondAttribute="bottom" id="lOT-Jy-bQB"/>
                         </constraints>
                     </view>
@@ -338,6 +352,7 @@
         <image name="0" width="200" height="132"/>
         <image name="auth_screen_logo" width="60" height="60"/>
         <image name="like_button_on" width="42" height="42"/>
+        <image name="nav_back_button" width="24" height="24"/>
         <image name="nav_back_button_white" width="24" height="24"/>
         <image name="share_button" width="50" height="50"/>
         <image name="tab_editorial_active" width="30" height="30"/>
