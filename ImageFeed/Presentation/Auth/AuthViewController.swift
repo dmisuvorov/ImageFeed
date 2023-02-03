@@ -9,6 +9,7 @@ import UIKit
 
 class AuthViewController : UIViewController {
     private let ShowWebViewSegueId = "ShowWebView"
+    private let oAuth2Service = OAuth2Service()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == ShowWebViewSegueId {
@@ -26,7 +27,9 @@ class AuthViewController : UIViewController {
 
 extension AuthViewController: WebViewViewControllerDelegate {
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
-        //TODO: process code
+        oAuth2Service.fetchAuthToken(code: code) { [weak self] result in
+            
+        }
     }
     
     func webViewViewControllerDidCancel(_ vc: WebViewViewController) {
