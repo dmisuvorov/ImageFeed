@@ -7,8 +7,12 @@
 import Foundation
 
 final class OAuth2Service {
-    private let tokenStorage = OAuth2TokenStorage()
+    private var tokenStorage: OAuth2TokenStorage
     private let urlSession = URLSession.shared
+    
+    init(tokenStorage: OAuth2TokenStorage) {
+        self.tokenStorage = tokenStorage
+    }
     
     func fetchAuthToken(
         code: String,

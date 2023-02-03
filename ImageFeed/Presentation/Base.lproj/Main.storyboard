@@ -89,7 +89,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="vtp-OY-ZdV">
             <objects>
-                <tabBarController id="T6g-1O-afA" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarViewController" id="T6g-1O-afA" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lrn-va-TBA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
