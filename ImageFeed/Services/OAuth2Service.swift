@@ -42,7 +42,7 @@ final class OAuth2Service {
             + "&&code=\(code)"
             + "&&grant_type=authorization_code",
             httpMethod: "POST",
-            baseURL: DefaultBaseURL
+            baseURL: UnsplashTokenURL
         )
     }
     
@@ -51,6 +51,7 @@ final class OAuth2Service {
         completion: @escaping (Result<OAuthTokenResponseBody, Error>) -> Void
     ) -> URLSessionTask {
         let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
         return urlSession.makeUrlSessionTask(for: request) { result in
             let response = result.flatMap { data in
                 Result { try decoder.decode(OAuthTokenResponseBody.self, from: data) }
