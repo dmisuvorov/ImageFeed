@@ -24,7 +24,7 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if oAuth2TokenStorage.token == Empty {
+        if oAuth2TokenStorage.token != Empty {
             switchToTabBarController()
             return
         }
@@ -33,6 +33,7 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
     
     //MARK: - AuthViewControllerDelegate
     func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String) {
+        vc.dismiss(animated: true)
         dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
             self.fetchOAuthToken(code)
@@ -41,7 +42,7 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
     
     //MARK: - private func
     private func switchToTabBarController() {
-        guard let window = UIApplication.shared.windows.last else { fatalError("Invalid Configuration") }
+        guard let window = UIApplication.shared.windows.first else { fatalError("Invalid Configuration") }
         let tabBarController = UIStoryboard(name: MainStoryboardName, bundle: Bundle.main)
             .instantiateViewController(withIdentifier: TabBarViewControllerId)
         window.rootViewController = tabBarController
