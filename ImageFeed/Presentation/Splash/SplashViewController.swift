@@ -8,19 +8,13 @@
 import UIKit
 
 class SplashViewController : UIViewController, AuthViewControllerDelegate {
-    private var oAuth2Service: OAuth2Service?
-    
-    private let oAuth2TokenStorage = OAuth2TokenStorage()
+    private let oAuth2Service = OAuth2Service()
+    private let oAuth2TokenStorage = OAuth2TokenStorage.shared
     private let MainStoryboardName = "Main"
     private let TabBarViewControllerId = "TabBarViewController"
     private let ShowAuthenticationScreenSegueId = "ShowAuthenticationScreen"
     
     //MARK: - LifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        oAuth2Service = OAuth2Service(tokenStorage: oAuth2TokenStorage)
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -58,7 +52,7 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
                 self.switchToTabBarController()
                 UIBlockingProgressHUD.dismiss()
             case .failure:
-                ProgressHUD.dismiss()
+                UIBlockingProgressHUD.dismiss()
                 //TODO: [Sprint 11]
             }
         }
