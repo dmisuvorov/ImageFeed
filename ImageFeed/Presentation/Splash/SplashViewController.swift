@@ -9,6 +9,8 @@ import UIKit
 
 class SplashViewController : UIViewController, AuthViewControllerDelegate {
     private let oAuth2Service = OAuth2Service()
+    private let profileService = ProfileService()
+    
     private let oAuth2TokenStorage = OAuth2TokenStorage.shared
     private let MainStoryboardName = "Main"
     private let TabBarViewControllerId = "TabBarViewController"
@@ -17,9 +19,10 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
     //MARK: - LifeCycle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if oAuth2TokenStorage.token != Empty {
-            switchToTabBarController()
+        let accessToken = oAuth2TokenStorage.token
+        if accessToken != Empty {
+            UIBlockingProgressHUD.show()
+            fetchProfile(token: accessToken)
             return
         }
         switchToAuthViewController()
@@ -45,12 +48,25 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
     }
     
     private func fetchOAuthToken(_ code: String) {
-        oAuth2Service?.fetchAuthToken(code: code) { [weak self] result in
+        oAuth2Service.fetchAuthToken(code: code) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let token):
+                self.fetchProfile(token: token)
+            case .failure:
+                UIBlockingProgressHUD.dismiss()
+                //TODO: [Sprint 11]
+            }
+        }
+    }
+    
+    private func fetchProfile(token: String) {
+        profileService.fetchProfile(token) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success:
-                self.switchToTabBarController()
                 UIBlockingProgressHUD.dismiss()
+                self.switchToTabBarController()
             case .failure:
                 UIBlockingProgressHUD.dismiss()
                 //TODO: [Sprint 11]

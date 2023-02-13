@@ -8,6 +8,7 @@
 import UIKit
 
 final class ProfileService {
+    private(set) var profile: Profile?
     private let oAuth2TokenStorage = OAuth2TokenStorage.shared
     private let urlSession = URLSession.shared
     private var currentUrlSessionTask: URLSessionTask?
@@ -19,11 +20,12 @@ final class ProfileService {
         currentUrlSessionTask?.cancel()
         lastToken = oAuth2TokenStorage.token
         let request = profileRequest(token: token)
-        let task = createProfileUrlSessionTask(for: request) { (result: Result<ProfileResult, Error>) in
-            
+        let task = createProfileUrlSessionTask(for: request) { [weak self] (result: Result<ProfileResult, Error>) in
+            guard let self = self else { return }
             switch result {
             case .success(let profileResult):
                 let profile = profileResult.convertToProfile()
+                self.profile = profile
                 completion(Result.success(profile))
             case .failure(let error):
                 completion(Result.failure(error))

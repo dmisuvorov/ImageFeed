@@ -8,6 +8,7 @@
 import UIKit
 
 class ProfileViewController : UIViewController {
+    private let profileService = ProfileService()
     
     private lazy var avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
@@ -55,6 +56,7 @@ class ProfileViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        updateProfileDetails(profile: profileService.profile)
     }
     
     private func configureUI() {
@@ -83,5 +85,12 @@ class ProfileViewController : UIViewController {
             equal(\.topAnchor, \.safeAreaLayoutGuide.topAnchor, to: 56),
             equal(\.trailingAnchor, to: -16)
         ])
+    }
+    
+    private func updateProfileDetails(profile: Profile?) {
+        guard let profile = profile else { preconditionFailure("Unable to get user profile") }
+        nameLabel.text = profile.name
+        nicknameLabel.text = profile.loginName
+        statusLabel.text = profile.bio
     }
 }
