@@ -9,6 +9,8 @@ import Foundation
 final class OAuth2Service {
     private var tokenStorage: OAuth2TokenStorage
     private let urlSession = URLSession.shared
+    private var currentUrlSessionTask: URLSessionTask?
+    private var lastCode: String?
     
     init(tokenStorage: OAuth2TokenStorage) {
         self.tokenStorage = tokenStorage
@@ -18,6 +20,10 @@ final class OAuth2Service {
         code: String,
         completion: @escaping (Result<String, Error>) -> Void
     ) {
+        assert(Thread.isMainThread)
+        if lastCode == code { return }
+        currentUrlSessionTask?.cancel()
+        lastCode = code
         let request = authTokenRequest(code: code)
         let task = createAuthTokenUrlSessionTask(for: request) { [weak self] (result: Result<OAuthTokenResponseBody, Error>) in
             guard let self = self else { return }
@@ -30,6 +36,7 @@ final class OAuth2Service {
                 completion(Result.failure(error))
             }
         }
+        currentUrlSessionTask = task
         task.resume()
     }
     
