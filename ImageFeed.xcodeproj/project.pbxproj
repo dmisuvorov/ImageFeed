@@ -28,6 +28,7 @@
 		62CF1E69295B98FD006D9581 /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CF1E68295B98FD006D9581 /* ImagesListCell.swift */; };
 		62E3D528295DD04B007EB771 /* VerticalGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E3D527295DD04B007EB771 /* VerticalGradientView.swift */; };
 		62EABAA12996E9200054F97A /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 62EABAA02996E9200054F97A /* ProgressHUD */; };
+		62EABAA3299A6D090054F97A /* UIBlockingProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABAA2299A6D090054F97A /* UIBlockingProgressHUD.swift */; };
 		62EB1D9229756285002A198E /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D9129756285002A198E /* SingleImageViewController.swift */; };
 		62EB1D95297DD6AE002A198E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D94297DD6AE002A198E /* ProfileViewController.swift */; };
 		62EB1D98297DE072002A198E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D97297DE071002A198E /* Colors.swift */; };
@@ -61,6 +62,7 @@
 		62C37880294CA3220014BCD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		62CF1E68295B98FD006D9581 /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 		62E3D527295DD04B007EB771 /* VerticalGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalGradientView.swift; sourceTree = "<group>"; };
+		62EABAA2299A6D090054F97A /* UIBlockingProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBlockingProgressHUD.swift; sourceTree = "<group>"; };
 		62EB1D9129756285002A198E /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		62EB1D94297DD6AE002A198E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		62EB1D97297DE071002A198E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				62A020602987DE4F0060664E /* Constants.swift */,
 				62A02083298C5C620060664E /* UrlRequest+Extensions.swift */,
 				62A02087298C67DD0060664E /* UrlSession+Extenstions.swift */,
+				62EABAA2299A6D090054F97A /* UIBlockingProgressHUD.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				62A0205D2987D1280060664E /* AuthViewController.swift in Sources */,
 				62C37877294CA31F0014BCD7 /* ImageListViewController.swift in Sources */,
 				62A0207E298BDAFE0060664E /* OAuth2Service.swift in Sources */,
+				62EABAA3299A6D090054F97A /* UIBlockingProgressHUD.swift in Sources */,
 				62EB1DA4297E8B98002A198E /* UIView+LayoutConstraint.swift in Sources */,
 				62EB1D98297DE072002A198E /* Colors.swift in Sources */,
 				62CF1E69295B98FD006D9581 /* ImagesListCell.swift in Sources */,
