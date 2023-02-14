@@ -22,7 +22,7 @@ final class ProfileService {
         currentUrlSessionTask?.cancel()
         lastToken = oAuth2TokenStorage.token
         let request = profileRequest(token: token)
-        let task = createProfileUrlSessionTask(for: request) { [weak self] (result: Result<ProfileResult, Error>) in
+        let task = urlSession.makeUrlSessionTask(for: request) { [weak self] (result: Result<ProfileResult, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let profileResult):
@@ -45,19 +45,5 @@ final class ProfileService {
         )
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
-    }
-    
-    private func createProfileUrlSessionTask(
-        for request: URLRequest,
-        completion: @escaping (Result<ProfileResult, Error>) -> Void
-    ) -> URLSessionTask {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
-        return urlSession.makeUrlSessionTask(for: request) { result in
-            let response = result.flatMap { data in
-                Result { try decoder.decode(ProfileResult.self, from: data) }
-            }
-            completion(response)
-        }
     }
 }

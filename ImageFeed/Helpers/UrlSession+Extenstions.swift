@@ -9,6 +9,20 @@ import UIKit
 
 extension URLSession {
     
+    func makeUrlSessionTask<T: Decodable>(
+        for request: URLRequest,
+        completion: @escaping (Result<T, Error>) -> Void
+    ) -> URLSessionTask {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
+        return makeUrlSessionTask(for: request) { result in
+            let response = result.flatMap { data in
+                Result { try decoder.decode(T.self, from: data) }
+            }
+            completion(response)
+        }
+    }
+    
     func makeUrlSessionTask(
         for request: URLRequest,
         completion: @escaping (Result<Data, Error>) -> Void

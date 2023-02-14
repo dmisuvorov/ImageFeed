@@ -23,7 +23,7 @@ final class OAuth2Service {
         currentUrlSessionTask?.cancel()
         lastCode = code
         let request = authTokenRequest(code: code)
-        let task = createAuthTokenUrlSessionTask(for: request) { [weak self] (result: Result<OAuthTokenResponseBody, Error>) in
+        let task = urlSession.makeUrlSessionTask(for: request) { [weak self] (result: Result<OAuthTokenResponseBody, Error>) in
             guard let self = self else { return }
             switch result {
             case .success(let body):
@@ -50,20 +50,5 @@ final class OAuth2Service {
             baseURL: UnsplashTokenURL
         )
     }
-    
-    private func createAuthTokenUrlSessionTask(
-        for request: URLRequest,
-        completion: @escaping (Result<OAuthTokenResponseBody, Error>) -> Void
-    ) -> URLSessionTask {
-        let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase
-        return urlSession.makeUrlSessionTask(for: request) { result in
-            let response = result.flatMap { data in
-                Result { try decoder.decode(OAuthTokenResponseBody.self, from: data) }
-            }
-            completion(response)
-        }
-    }
-    
     
 }
