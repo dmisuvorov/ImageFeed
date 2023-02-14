@@ -8,6 +8,8 @@
 import UIKit
 
 final class ProfileService {
+    static let shared = ProfileService()
+    
     private(set) var profile: Profile?
     private let oAuth2TokenStorage = OAuth2TokenStorage.shared
     private let urlSession = URLSession.shared
@@ -28,6 +30,7 @@ final class ProfileService {
                 self.profile = profile
                 completion(Result.success(profile))
             case .failure(let error):
+                self.profile = nil
                 completion(Result.failure(error))
             }
         }

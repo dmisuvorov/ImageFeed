@@ -8,7 +8,7 @@
 import UIKit
 
 class ProfileViewController : UIViewController {
-    private let profileService = ProfileService()
+    private let profileService = ProfileService.shared
     
     private lazy var avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()

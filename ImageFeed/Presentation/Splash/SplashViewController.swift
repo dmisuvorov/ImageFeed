@@ -8,10 +8,11 @@
 import UIKit
 
 class SplashViewController : UIViewController, AuthViewControllerDelegate {
-    private let oAuth2Service = OAuth2Service()
-    private let profileService = ProfileService()
-    
+    private let oAuth2Service = OAuth2Service.shared
+    private let profileService = ProfileService.shared
     private let oAuth2TokenStorage = OAuth2TokenStorage.shared
+    private let profileImageService = ProfileImageService.shared
+    
     private let MainStoryboardName = "Main"
     private let TabBarViewControllerId = "TabBarViewController"
     private let ShowAuthenticationScreenSegueId = "ShowAuthenticationScreen"
@@ -64,13 +65,26 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
         profileService.fetchProfile(token) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .success:
+            case .success(let profile):
+                self.fetchProfileImageURL(username: profile.username)
                 UIBlockingProgressHUD.dismiss()
                 self.switchToTabBarController()
             case .failure:
                 UIBlockingProgressHUD.dismiss()
                 //TODO: [Sprint 11]
             }
+        }
+    }
+    
+    private func fetchProfileImageURL(username: String) {
+        profileImageService.fetchProfileImageURL(username: username) { [weak self] result in
+            guard let self = self else { return }
+//            switch result {
+//            case .success:
+//                //TODO: [Sprint 11]
+//            case .failure:
+//                //TODO: [Sprint 11]
+//            }
         }
     }
 }
