@@ -9,6 +9,7 @@ import UIKit
 
 final class ProfileImageService {
     static let shared = ProfileImageService()
+    static let didChangeNotification = Notification.Name(rawValue: "ProfileImageProviderDidChange")
     
     private (set) var avatarURL: String?
     
@@ -30,6 +31,12 @@ final class ProfileImageService {
                 let profileSmallImageURL = userResult.profileImage.small
                 self.avatarURL = profileSmallImageURL
                 completion(Result.success(profileSmallImageURL))
+                NotificationCenter.default
+                    .post(
+                        name: ProfileImageService.didChangeNotification,
+                        object: self,
+                        userInfo: ["URL" : profileSmallImageURL]
+                    )
             case .failure(let error):
                 self.avatarURL = nil
                 completion(Result.failure(error))
