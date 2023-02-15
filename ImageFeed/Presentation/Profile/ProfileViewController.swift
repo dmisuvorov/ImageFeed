@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProfileViewController : UIViewController {
     private let profileService = ProfileService.shared
+    private let avatarPlaceholder = UIImage(named: "avatar_place_holder")
     private var profileImageServiceObserver: NSObjectProtocol?
     
     private lazy var avatarImageView: UIImageView = {
@@ -116,6 +118,16 @@ class ProfileViewController : UIViewController {
             let profileImageURL = ProfileImageService.shared.avatarURL,
             let url = URL(string: profileImageURL)
         else { return }
-        //TODO: Sprint 11
+        avatarImageView.kf.indicatorType = IndicatorType.activity
+        avatarImageView.kf.setImage(with: url, placeholder: avatarPlaceholder) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let imageResult):
+                self.avatarImageView.image = imageResult.image
+            case .failure:
+                self.avatarImageView.image = self.avatarPlaceholder
+            }
+        }
     }
 }
