@@ -12,6 +12,7 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
     private let profileService = ProfileService.shared
     private let oAuth2TokenStorage = OAuth2TokenStorage.shared
     private let profileImageService = ProfileImageService.shared
+    private lazy var errorAlertPresenter = AlertPresenter(viewController: self)
     
     private let MainStoryboardName = "Main"
     private let TabBarViewControllerId = "TabBarViewController"
@@ -56,7 +57,12 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
                 self.fetchProfile(token: token)
             case .failure:
                 UIBlockingProgressHUD.dismiss()
-                //TODO: [Sprint 11]
+                self.errorAlertPresenter.presentAlert(
+                    title: "Что-то пошло не так",
+                    message: "Не удалось войти в систему",
+                    firstButtonTitle: "Ок",
+                    firstButtonAction: { self.switchToAuthViewController() }
+                )
             }
         }
     }
@@ -71,7 +77,12 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
                 self.switchToTabBarController()
             case .failure:
                 UIBlockingProgressHUD.dismiss()
-                //TODO: [Sprint 11]
+                self.errorAlertPresenter.presentAlert(
+                    title: "Что-то пошло не так",
+                    message: "Не удалось войти в систему",
+                    firstButtonTitle: "Ок",
+                    firstButtonAction: { self.switchToAuthViewController() }
+                )
             }
         }
     }
@@ -79,12 +90,22 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
     private func fetchProfileImageURL(username: String) {
         profileImageService.fetchProfileImageURL(username: username) { [weak self] result in
             guard let self = self else { return }
-//            switch result {
-//            case .success:
-//                //TODO: [Sprint 11]
-//            case .failure:
-//                //TODO: [Sprint 11]
-//            }
+            switch result {
+            case .success(let profileSmallImageURL):
+                NotificationCenter.default
+                    .post(
+                        name: ProfileImageService.didChangeNotification,
+                        object: self.profileImageService,
+                        userInfo: ["URL" : profileSmallImageURL]
+                    )
+            case .failure:
+                self.errorAlertPresenter.presentAlert(
+                    title: "Что-то пошло не так",
+                    message: "Не удалось войти в систему",
+                    firstButtonTitle: "Ок",
+                    firstButtonAction: { self.switchToAuthViewController() }
+                )
+            }
         }
     }
 }

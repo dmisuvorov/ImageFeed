@@ -31,12 +31,6 @@ final class ProfileImageService {
                 let profileSmallImageURL = userResult.profileImage.small
                 self.avatarURL = profileSmallImageURL
                 completion(Result.success(profileSmallImageURL))
-                NotificationCenter.default
-                    .post(
-                        name: ProfileImageService.didChangeNotification,
-                        object: self,
-                        userInfo: ["URL" : profileSmallImageURL]
-                    )
             case .failure(let error):
                 self.avatarURL = nil
                 completion(Result.failure(error))
