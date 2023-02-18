@@ -40,15 +40,10 @@ class WebViewViewController : UIViewController {
 
         estimatedProgressObservation = webView.observe(
             \.estimatedProgress,
-             options: .new) { [weak self] webView, change in
+             options: .new) { [weak self] _, _ in
                  guard let self = self else { return }
                  self.updateProgress()
              }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), context: nil)
     }
     
     @IBAction private func didTapBackButton(_ sender: Any?) {
