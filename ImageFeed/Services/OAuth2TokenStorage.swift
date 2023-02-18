@@ -12,14 +12,12 @@ final class OAuth2TokenStorage {
     
     private let keychainWrapper = KeychainWrapper.standard
     
-    var token: String {
+    var token: String? {
         get {
-            guard let data = keychainWrapper.string(forKey: Keys.token.rawValue) else {
-                return .init()
-            }
-            return data
+            return keychainWrapper.string(forKey: Keys.token.rawValue)
         }
         set {
+            guard let newValue = newValue else { return }
             keychainWrapper.set(newValue, forKey: Keys.token.rawValue)
         }
     }

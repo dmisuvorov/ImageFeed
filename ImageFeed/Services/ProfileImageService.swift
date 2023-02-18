@@ -21,7 +21,8 @@ final class ProfileImageService {
     func fetchProfileImageURL(username: String, _ completion: @escaping (Result<String, Error>) -> Void) {
         assert(Thread.isMainThread)
         guard lastUsername != username,
-              let request = profileImageRequest(token: oAuth2TokenStorage.token, username: username) else { return }
+              let token = oAuth2TokenStorage.token,
+              let request = profileImageRequest(token: token, username: username) else { return }
         
         currentUrlSessionTask?.cancel()
         lastUsername = username
