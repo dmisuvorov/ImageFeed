@@ -94,12 +94,7 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
                 self.fetchProfile(token: token)
             case .failure:
                 UIBlockingProgressHUD.dismiss()
-                self.errorAlertPresenter.presentAlert(
-                    title: "Что-то пошло не так",
-                    message: "Не удалось войти в систему",
-                    firstButtonTitle: "Ок",
-                    firstButtonAction: { self.switchToAuthViewController() }
-                )
+                self.showErrrorAlert()
             }
         }
     }
@@ -114,12 +109,7 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
                 self.switchToTabBarController()
             case .failure:
                 UIBlockingProgressHUD.dismiss()
-                self.errorAlertPresenter.presentAlert(
-                    title: "Что-то пошло не так",
-                    message: "Не удалось войти в систему",
-                    firstButtonTitle: "Ок",
-                    firstButtonAction: { self.switchToAuthViewController() }
-                )
+                self.showErrrorAlert()
             }
         }
     }
@@ -136,13 +126,17 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
                         userInfo: ["URL" : profileSmallImageURL]
                     )
             case .failure:
-                self.errorAlertPresenter.presentAlert(
-                    title: "Что-то пошло не так",
-                    message: "Не удалось войти в систему",
-                    firstButtonTitle: "Ок",
-                    firstButtonAction: { self.switchToAuthViewController() }
-                )
+                self.showErrrorAlert()
             }
         }
+    }
+    
+    private func showErrrorAlert() {
+        errorAlertPresenter.presentAlert(
+            title: "Что-то пошло не так",
+            message: "Не удалось войти в систему",
+            firstButtonTitle: "Ок",
+            firstButtonAction: { self.switchToAuthViewController() }
+        )
     }
 }
