@@ -11,17 +11,17 @@ struct ProfileResult: Codable {
     let username: String
     let firstName: String
     let lastName: String
-    let twitterUsername: String
+    let twitterUsername: String?
     let portfolioUrl: String?
-    let bio: String
-    let location: String
+    let bio: String?
+    let location: String?
     let totalLikes: Int
     let totalPhotos: Int
     let totalCollections: Int
     let followedByUser: Bool
     let downloads: Int
     let uploadsRemaining: Int
-    let instagramUsername: String
+    let instagramUsername: String?
     let email: String?
     let links: Links
 }
