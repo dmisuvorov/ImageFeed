@@ -20,10 +20,11 @@ final class ProfileImageService {
     
     func fetchProfileImageURL(username: String, _ completion: @escaping (Result<String, Error>) -> Void) {
         assert(Thread.isMainThread)
-        if lastUsername == username { return }
+        guard lastUsername != username,
+              let request = profileImageRequest(token: oAuth2TokenStorage.token, username: username) else { return }
+        
         currentUrlSessionTask?.cancel()
         lastUsername = username
-        let request = profileImageRequest(token: oAuth2TokenStorage.token, username: username)
         let task = urlSession.makeUrlSessionTask(for: request) { [weak self] (result: Result<UserResult, Error>) in
             guard let self = self else { return }
             switch result {
@@ -40,12 +41,12 @@ final class ProfileImageService {
         task.resume()
     }
     
-    private func profileImageRequest(token: String, username: String) -> URLRequest {
+    private func profileImageRequest(token: String, username: String) -> URLRequest? {
         var request = URLRequest.makeHTTPRequest(
             path: "users/\(username)",
             httpMethod: "GET"
         )
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request?.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
     }
 }

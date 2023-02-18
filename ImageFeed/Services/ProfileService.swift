@@ -18,10 +18,11 @@ final class ProfileService {
     
     func fetchProfile(_ token: String, completion: @escaping (Result<Profile, Error>) -> Void) {
         assert(Thread.isMainThread)
-        if lastToken == oAuth2TokenStorage.token { return }
+        guard lastToken != oAuth2TokenStorage.token,
+              let request = profileRequest(token: token) else { return }
+        
         currentUrlSessionTask?.cancel()
         lastToken = oAuth2TokenStorage.token
-        let request = profileRequest(token: token)
         let task = urlSession.makeUrlSessionTask(for: request) { [weak self] (result: Result<ProfileResult, Error>) in
             guard let self = self else { return }
             switch result {
@@ -38,12 +39,12 @@ final class ProfileService {
         task.resume()
     }
     
-    private func profileRequest(token: String) -> URLRequest {
+    private func profileRequest(token: String) -> URLRequest? {
         var request = URLRequest.makeHTTPRequest(
             path: "me",
             httpMethod: "GET"
         )
-        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request?.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
     }
 }

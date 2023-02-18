@@ -71,9 +71,13 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
     }
     
     private func switchToAuthViewController() {
-        guard let navigationController = mainStoryboard
-            .instantiateViewController(withIdentifier: NavigationControllerId) as? UINavigationController else { fatalError("Invalid Configuration") }
-        guard let authViewController = navigationController.viewControllers.first as? AuthViewController else { fatalError("Invalid Configuration") }
+        guard
+            let navigationController = mainStoryboard.instantiateViewController(withIdentifier: NavigationControllerId) as? UINavigationController,
+            let authViewController = navigationController.viewControllers.first as? AuthViewController
+        else {
+            assertionFailure("Invalid Configuration")
+            return
+        }
         authViewController.delegate = self
         window.rootViewController = authViewController
         window.makeKeyAndVisible()

@@ -19,10 +19,11 @@ final class OAuth2Service {
         completion: @escaping (Result<String, Error>) -> Void
     ) {
         assert(Thread.isMainThread)
-        if lastCode == code { return }
+        guard lastCode != code,
+              let request = authTokenRequest(code: code) else { return }
+        
         currentUrlSessionTask?.cancel()
         lastCode = code
-        let request = authTokenRequest(code: code)
         let task = urlSession.makeUrlSessionTask(for: request) { [weak self] (result: Result<OAuthTokenResponseBody, Error>) in
             guard let self = self else { return }
             switch result {
@@ -38,7 +39,7 @@ final class OAuth2Service {
         task.resume()
     }
     
-    private func authTokenRequest(code: String) -> URLRequest {
+    private func authTokenRequest(code: String) -> URLRequest? {
         URLRequest.makeHTTPRequest(
             path: "/oauth/token"
             + "?client_id=\(Constants.accessKey)"
