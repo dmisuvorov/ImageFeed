@@ -43,12 +43,12 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let accessToken = oAuth2TokenStorage.token
-        if accessToken != Empty {
-            UIBlockingProgressHUD.show()
-            fetchProfile(token: accessToken)
+        if accessToken.isEmpty {
+            switchToAuthViewController()
             return
         }
-        switchToAuthViewController()
+        UIBlockingProgressHUD.show()
+        fetchProfile(token: accessToken)
     }
     
     //MARK: - AuthViewControllerDelegate
