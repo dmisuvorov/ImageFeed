@@ -12,13 +12,34 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
     private let profileService = ProfileService.shared
     private let oAuth2TokenStorage = OAuth2TokenStorage.shared
     private let profileImageService = ProfileImageService.shared
-    private lazy var errorAlertPresenter = AlertPresenter(viewController: self)
     
     private let MainStoryboardName = "Main"
     private let TabBarViewControllerId = "TabBarViewController"
+    private let AuthViewControllerId = "AuthViewController"
+    private let NavigationControllerId = "NavigationController"
     private let ShowAuthenticationScreenSegueId = "ShowAuthenticationScreen"
     
+    private lazy var mainStoryboard = UIStoryboard(name: MainStoryboardName, bundle: Bundle.main)
+    private lazy var errorAlertPresenter = AlertPresenter(viewController: self)
+    private var window: UIWindow {
+        guard let window = UIApplication.shared.windows.first else { fatalError("Invalid Configuration") }
+        return window
+    }
+    
+    private lazy var logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        let image = UIImage(named: "splash_screen_logo")
+        imageView.image = image
+        return imageView
+    }()
+    
     //MARK: - LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let accessToken = oAuth2TokenStorage.token
@@ -41,9 +62,25 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
     }
     
     //MARK: - private func
+    private func configureUI() {
+        self.view.backgroundColor = UIColor.ypBlack
+        self.view.addSubview(self.logoImageView, constraints: [
+            equal(\.centerXAnchor, \.safeAreaLayoutGuide.centerXAnchor),
+            equal(\.centerYAnchor, \.safeAreaLayoutGuide.centerYAnchor)
+        ])
+    }
+    
+    private func switchToAuthViewController() {
+        guard let navigationController = mainStoryboard
+            .instantiateViewController(withIdentifier: NavigationControllerId) as? UINavigationController else { fatalError("Invalid Configuration") }
+        guard let authViewController = navigationController.viewControllers.first as? AuthViewController else { fatalError("Invalid Configuration") }
+        authViewController.delegate = self
+        window.rootViewController = authViewController
+        window.makeKeyAndVisible()
+    }
+    
     private func switchToTabBarController() {
-        guard let window = UIApplication.shared.windows.first else { fatalError("Invalid Configuration") }
-        let tabBarController = UIStoryboard(name: MainStoryboardName, bundle: Bundle.main)
+        let tabBarController = mainStoryboard
             .instantiateViewController(withIdentifier: TabBarViewControllerId)
         window.rootViewController = tabBarController
         window.makeKeyAndVisible()
@@ -107,25 +144,5 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
                 )
             }
         }
-    }
-}
-
-//MARK: - Switch to Auth flow
-extension SplashViewController {
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == ShowAuthenticationScreenSegueId {
-            guard
-                let navigationController = segue.destination as? UINavigationController,
-                let authViewController = navigationController.viewControllers[0] as? AuthViewController
-            else { fatalError("Failed to prepare for \(ShowAuthenticationScreenSegueId)") }
-            authViewController.delegate = self
-        } else {
-            super.prepare(for: segue, sender: sender)
-        }
-    }
-    
-    private func switchToAuthViewController() {
-        performSegue(withIdentifier: ShowAuthenticationScreenSegueId, sender: nil)
     }
 }
