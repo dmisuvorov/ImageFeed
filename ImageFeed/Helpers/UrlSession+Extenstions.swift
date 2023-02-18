@@ -34,20 +34,22 @@ extension URLSession {
         }
         
         let task = dataTask(with: request) { data, response, error in
-            if let data = data,
-               let response = response,
-               let statusCode = (response as? HTTPURLResponse)?.statusCode
-            {
-                if (200..<300).contains(statusCode) {
-                    fulfillCompletion(Result.success(data))
-                    return
-                }
-                fulfillCompletion(Result.failure(NetworkError.httpStatusCode(statusCode)))
-            } else if let error = error {
+            if let error = error {
                 fulfillCompletion(Result.failure(NetworkError.urlRequestError(error)))
-            } else {
-                fulfillCompletion(Result.failure(NetworkError.urlSessionError))
+                return
             }
+            guard let data = data,
+                  let response = response as? HTTPURLResponse else {
+                fulfillCompletion(Result.failure(NetworkError.urlSessionError))
+                return
+            }
+            
+            let statusCode = response.statusCode
+            if (200..<300).contains(statusCode) {
+                fulfillCompletion(Result.success(data))
+                return
+            }
+            fulfillCompletion(Result.failure(NetworkError.httpStatusCode(statusCode)))
         }
         task.resume()
         return task
