@@ -8,7 +8,7 @@
 import UIKit
 
 class AuthViewController : UIViewController {
-    weak var delegate: AuthViewControllerDelegate?
+    var delegate: AuthViewControllerDelegate?
     
     private let ShowWebViewSegueId = "ShowWebView"
     
