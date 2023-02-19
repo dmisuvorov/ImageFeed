@@ -5,20 +5,20 @@
 //  Created by Суворов Дмитрий Владимирович on 03.02.2023.
 //
 
-import Foundation
+import SwiftKeychainWrapper
 
 final class OAuth2TokenStorage {
-    private let userDefaults = UserDefaults.standard
+    static let shared = OAuth2TokenStorage()
     
-    var token: String {
+    private let keychainWrapper = KeychainWrapper.standard
+    
+    var token: String? {
         get {
-            guard let data = userDefaults.string(forKey: Keys.token.rawValue) else {
-                return .init()
-            }
-            return data
+            return keychainWrapper.string(forKey: Keys.token.rawValue)
         }
         set {
-            userDefaults.set(newValue, forKey: Keys.token.rawValue)
+            guard let newValue = newValue else { return }
+            keychainWrapper.set(newValue, forKey: Keys.token.rawValue)
         }
     }
     

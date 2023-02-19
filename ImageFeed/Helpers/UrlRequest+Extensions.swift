@@ -12,10 +12,11 @@ extension URLRequest {
     static func makeHTTPRequest(
         path: String,
         httpMethod: String,
-        baseURL: URL = DefaultBaseURL
-    ) -> URLRequest {
+        baseURL: URL = Constants.defaultBaseURL
+    ) -> URLRequest? {
         guard let url = URL(string: path, relativeTo: baseURL) else {
-            fatalError("URL \(baseURL)\\\(path) is not correct")
+            assertionFailure("URL \(baseURL)\\\(path) is not correct")
+            return nil
         }
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod

@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProfileViewController : UIViewController {
+    private let profileService = ProfileService.shared
+    private let avatarPlaceholder = UIImage(named: "avatar_place_holder")
+    private var profileImageServiceObserver: NSObjectProtocol?
     
     private lazy var avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
@@ -54,7 +58,22 @@ class ProfileViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateProfileDetails(profile: profileService.profile)
         configureUI()
+        configureObserver()
+    }
+    
+    private func configureObserver() {
+        profileImageServiceObserver = NotificationCenter
+            .default
+            .addObserver(
+                forName: ProfileImageService.didChangeNotification,
+                object: nil,
+                queue: OperationQueue.main
+            ) { [weak self] _ in
+                guard let self = self else { return }
+                self.updateAvatar()
+            }
     }
     
     private func configureUI() {
@@ -83,5 +102,32 @@ class ProfileViewController : UIViewController {
             equal(\.topAnchor, \.safeAreaLayoutGuide.topAnchor, to: 56),
             equal(\.trailingAnchor, to: -16)
         ])
+    }
+    
+    private func updateProfileDetails(profile: Profile?) {
+        guard let profile = profile else { preconditionFailure("Unable to get user profile") }
+        nameLabel.text = profile.name
+        nicknameLabel.text = profile.loginName
+        statusLabel.text = profile.bio
+        
+        updateAvatar()
+    }
+    
+    private func updateAvatar() {
+        guard
+            let profileImageURL = ProfileImageService.shared.avatarURL,
+            let url = URL(string: profileImageURL)
+        else { return }
+        avatarImageView.kf.indicatorType = IndicatorType.activity
+        avatarImageView.kf.setImage(with: url, placeholder: avatarPlaceholder) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let imageResult):
+                self.avatarImageView.image = imageResult.image
+            case .failure:
+                self.avatarImageView.image = self.avatarPlaceholder
+            }
+        }
     }
 }
