@@ -20,7 +20,7 @@ class ImageListViewController: UIViewController {
         formatter.timeStyle = .none
         return formatter
     }()
-
+    
     @IBOutlet private var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -34,8 +34,8 @@ class ImageListViewController: UIViewController {
             let viewController = segue.destination as! SingleImageViewController
             let indexPath = sender as! IndexPath
             let imageName = photos[indexPath.row]
-//            let image = UIImage(named: "\(imageName)_full_size") ?? UIImage(named: imageName)
-//            viewController.image = image
+            //            let image = UIImage(named: "\(imageName)_full_size") ?? UIImage(named: imageName)
+            //            viewController.image = image
             //TODO: - показ картинки в большом разрешении
         } else {
             super.prepare(for: segue, sender: sender)
@@ -87,24 +87,24 @@ extension ImageListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ImagesListCell.reuseIdentifier, for: indexPath)
-                
+        
         guard let imageListCell = cell as? ImagesListCell else {
-                return UITableViewCell()
+            return UITableViewCell()
         }
-                
+        
+        imageListCell.delegate = self
         configCell(for: imageListCell, with: indexPath)
-            return imageListCell
+        return imageListCell
     }
     
     private func configCell(for cell: ImagesListCell, with indexPath: IndexPath) {
         guard
             let image = photos[safe: indexPath.row],
             let thumbUrl = URL(string: image.thumbImageURL) else { return }
-
-//        TODO: - разобраться с датой cell.dateLabel.text = 
-        let likeImage = image.isLiked ? UIImage(named: "like_button_on") : UIImage(named: "like_button_off")
-        cell.likeButton.setImage(likeImage, for: .normal)
-
+        
+        //        TODO: - разобраться с датой cell.dateLabel.text =
+        cell.setIsLiked(image.isLiked)
+        // TODO: - перенести всю логику по kingfisher в ImagesListCell
         cell.cellImage.kf.indicatorType = IndicatorType.activity
         cell.cellImage.kf.setImage(
             with: thumbUrl,
@@ -112,6 +112,28 @@ extension ImageListViewController: UITableViewDataSource {
         ) { [weak self] _ in
             guard let self = self else { return }
             self.tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        }
+    }
+}
+
+extension ImageListViewController: ImageListCellDelegate {
+    
+    func imageListCellDidTapLike(_ cell: ImagesListCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        let photo = photos[indexPath.row]
+        UIBlockingProgressHUD.show()
+        imagesListService.changeLike(photoId: photo.id, isLike: !photo.isLiked) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success:
+                self.photos = self.imagesListService.photos
+                cell.setIsLiked(self.photos[indexPath.row].isLiked)
+                UIBlockingProgressHUD.dismiss()
+            case .failure:
+                UIBlockingProgressHUD.dismiss()
+                // TODO: Показать ошибку с использованием UIAlertController
+            }
         }
     }
 }
