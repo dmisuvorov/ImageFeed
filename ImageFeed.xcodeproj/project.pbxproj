@@ -42,6 +42,7 @@
 		62EABAC229A367EC0054F97A /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABAC129A367EC0054F97A /* ImagesListService.swift */; };
 		62EABAC429A36F730054F97A /* PhotoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABAC329A36F730054F97A /* PhotoResult.swift */; };
 		62EABAC629A3F9470054F97A /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABAC529A3F9470054F97A /* Array+Extensions.swift */; };
+		62EABAC829A542C00054F97A /* LikeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABAC729A542C00054F97A /* LikeResult.swift */; };
 		62EB1D9229756285002A198E /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D9129756285002A198E /* SingleImageViewController.swift */; };
 		62EB1D95297DD6AE002A198E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D94297DD6AE002A198E /* ProfileViewController.swift */; };
 		62EB1D98297DE072002A198E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D97297DE071002A198E /* Colors.swift */; };
@@ -87,6 +88,7 @@
 		62EABAC129A367EC0054F97A /* ImagesListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
 		62EABAC329A36F730054F97A /* PhotoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResult.swift; sourceTree = "<group>"; };
 		62EABAC529A3F9470054F97A /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		62EABAC729A542C00054F97A /* LikeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeResult.swift; sourceTree = "<group>"; };
 		62EB1D9129756285002A198E /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		62EB1D94297DD6AE002A198E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		62EB1D97297DE071002A198E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				62EABAA6299ABB210054F97A /* ProfileResult.swift */,
 				62EABAAD299B8CDD0054F97A /* UserResult+ProfileImage.swift */,
 				62EABAC329A36F730054F97A /* PhotoResult.swift */,
+				62EABAC729A542C00054F97A /* LikeResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				62EABAAE299B8CDD0054F97A /* UserResult+ProfileImage.swift in Sources */,
 				62EABAA7299ABB210054F97A /* ProfileResult.swift in Sources */,
 				62A020632987E1BC0060664E /* WebViewViewControllerDelegate.swift in Sources */,
+				62EABAC829A542C00054F97A /* LikeResult.swift in Sources */,
 				62C37873294CA31F0014BCD7 /* AppDelegate.swift in Sources */,
 				62A0208A298D09610060664E /* NetworkError.swift in Sources */,
 				62EABAB5299CD3CA0054F97A /* AlertPresenter.swift in Sources */,
