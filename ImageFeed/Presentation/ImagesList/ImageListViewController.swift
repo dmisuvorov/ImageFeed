@@ -31,9 +31,10 @@ class ImageListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showSingleImageSegueIdentifier {
-            let viewController = segue.destination as! SingleImageViewController
-            let indexPath = sender as! IndexPath
-            let imageName = photos[indexPath.row]
+            let viewController = segue.destination as? SingleImageViewController
+            guard let indexPath = sender as? IndexPath,
+                  let imageName = photos[safe: indexPath.row]?.largeImageURL else { return }
+            
             //            let image = UIImage(named: "\(imageName)_full_size") ?? UIImage(named: imageName)
             //            viewController.image = image
             //TODO: - показ картинки в большом разрешении

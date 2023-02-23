@@ -5,17 +5,10 @@
 //  Created by Суворов Дмитрий Владимирович on 16.01.2023.
 //
 
-import Foundation
 import UIKit
 
 class SingleImageViewController: UIViewController {
-    var image: UIImage! {
-        didSet {
-            guard isViewLoaded else { return }
-            imageView.image = image
-            rescaleAndCenterImageInScrollView(image: image)
-        }
-    }
+    private lazy var errorAlertPresenter = AlertPresenter(viewController: self)
     
     @IBOutlet private var imageView: UIImageView!
     
@@ -38,8 +31,21 @@ class SingleImageViewController: UIViewController {
         super.viewDidLoad()
         scrollView.minimumZoomScale = 0.1
         scrollView.maximumZoomScale = 1.25
-        imageView.image = image
-        rescaleAndCenterImageInScrollView(image: image)
+    }
+    
+    func loadAndShowImage(url: URL) {
+        UIBlockingProgressHUD.show()
+        imageView.kf.setImage(with: url) { [weak self] result in
+            UIBlockingProgressHUD.dismiss()
+            
+            guard let self = self else { return }
+            switch result {
+            case .success(let imageResult):
+                self.rescaleAndCenterImageInScrollView(image: imageResult.image)
+            case .failure:
+                self.showError(url: url)
+            }
+        }
     }
     
     private func rescaleAndCenterImageInScrollView(image: UIImage) {
@@ -57,6 +63,17 @@ class SingleImageViewController: UIViewController {
         let x = (newContentSize.width - visibleRectSize.width) / 2
         let y = (newContentSize.height - visibleRectSize.height) / 2
         scrollView.setContentOffset(CGPoint(x: x, y: y), animated: false)
+    }
+    
+    private func showError(url: URL) {
+        errorAlertPresenter.presentAlert(
+            title: "Что-то пошло не так",
+            message: "Попробовать ещё раз?",
+            firstButtonTitle: "Ненадо",
+            firstButtonAction: { self.dismiss(animated: true) },
+            secondButtonTitle: "Повторить",
+            secondButtonAction: { self.loadAndShowImage(url: url) }
+        )
     }
 }
 
