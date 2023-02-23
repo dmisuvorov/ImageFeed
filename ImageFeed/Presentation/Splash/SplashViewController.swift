@@ -21,8 +21,11 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
     
     private lazy var mainStoryboard = UIStoryboard(name: MainStoryboardName, bundle: Bundle.main)
     private lazy var errorAlertPresenter = AlertPresenter(viewController: self)
-    private var window: UIWindow {
-        guard let window = UIApplication.shared.windows.first else { fatalError("Invalid Configuration") }
+    private var window: UIWindow? {
+        guard let window = UIApplication.shared.windows.first else {
+            assertionFailure("Invalid Configuration")
+            return nil
+        }
         return window
     }
     
@@ -80,15 +83,15 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
             return
         }
         authViewController.delegate = self
-        window.rootViewController = authViewController
-        window.makeKeyAndVisible()
+        window?.rootViewController = authViewController
+        window?.makeKeyAndVisible()
     }
     
     private func switchToTabBarController() {
         let tabBarController = mainStoryboard
             .instantiateViewController(withIdentifier: TabBarViewControllerId)
-        window.rootViewController = tabBarController
-        window.makeKeyAndVisible()
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
     }
     
     private func fetchOAuthToken(_ code: String) {
