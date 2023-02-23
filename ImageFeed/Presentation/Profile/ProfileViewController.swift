@@ -10,8 +10,19 @@ import Kingfisher
 
 class ProfileViewController : UIViewController {
     private let profileService = ProfileService.shared
+    private let oAuth2TokenStorage = OAuth2TokenStorage.shared
     private let avatarPlaceholder = UIImage(named: "avatar_place_holder")
     private var profileImageServiceObserver: NSObjectProtocol?
+    
+    private var window: UIWindow? {
+        guard let window = UIApplication.shared.windows.first else {
+            assertionFailure("Invalid Configuration")
+            return nil
+        }
+        return window
+    }
+    
+    private lazy var alertPresenter = AlertPresenter(viewController: self)
     
     private lazy var avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
@@ -53,6 +64,7 @@ class ProfileViewController : UIViewController {
         let logoutButton = UIButton()
         logoutButton.setImage(UIImage(named: "logout_button"), for: UIControl.State.normal)
         logoutButton.tintColor = UIColor.ypRed
+        logoutButton.addTarget(self, action: #selector(onLogoutButtonClick), for: .touchUpInside)
         return logoutButton
     }()
     
@@ -74,6 +86,24 @@ class ProfileViewController : UIViewController {
                 guard let self = self else { return }
                 self.updateAvatar()
             }
+    }
+    
+    @objc private func onLogoutButtonClick() {
+        alertPresenter.presentAlert(
+            title: "Пока, пока!",
+            message: "Уверены сто хотите выйти?",
+            firstButtonTitle: "Да",
+            firstButtonAction: { self.logout() },
+            secondButtonTitle: "Нет",
+            secondButtonAction: { }
+        )
+    }
+    
+    private func logout() {
+        oAuth2TokenStorage.token = ""
+        WebViewViewController.clearData()
+        window?.rootViewController = SplashViewController()
+        window?.makeKeyAndVisible()
     }
     
     private func configureUI() {
