@@ -103,7 +103,7 @@ extension ImageListViewController: UITableViewDataSource {
             let image = photos[safe: indexPath.row],
             let thumbUrl = URL(string: image.thumbImageURL) else { return }
         
-        //        TODO: - разобраться с датой cell.dateLabel.text =
+        cell.dateLabel.text = image.createdAt
         cell.setIsLiked(image.isLiked)
         // TODO: - перенести всю логику по kingfisher в ImagesListCell
         cell.cellImage.kf.indicatorType = IndicatorType.activity

@@ -59,10 +59,11 @@ extension Photo {
 
 extension PhotoResult {
     func convertToPhoto() -> Photo {
-        Photo(
+        let date = DateHelper.shared.dateFromIso8601String(from: self.createdAt)
+        return Photo(
             id: self.id,
             size: CGSize(width: Double(self.width), height: Double(self.height)),
-            createdAt: self.createdAt,
+            createdAt: DateHelper.shared.stringOrEmptyFromDate(from: date),
             welcomeDescription: self.description,
             thumbImageURL: self.urls.thumb,
             largeImageURL: self.urls.full,

@@ -44,6 +44,7 @@
 		62EABAC629A3F9470054F97A /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABAC529A3F9470054F97A /* Array+Extensions.swift */; };
 		62EABAC829A542C00054F97A /* LikeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABAC729A542C00054F97A /* LikeResult.swift */; };
 		62EABACA29A54B220054F97A /* ImageListCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABAC929A54B220054F97A /* ImageListCellDelegate.swift */; };
+		62EABACC29AE8C4D0054F97A /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABACB29AE8C4C0054F97A /* DateHelper.swift */; };
 		62EB1D9229756285002A198E /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D9129756285002A198E /* SingleImageViewController.swift */; };
 		62EB1D95297DD6AE002A198E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D94297DD6AE002A198E /* ProfileViewController.swift */; };
 		62EB1D98297DE072002A198E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D97297DE071002A198E /* Colors.swift */; };
@@ -91,6 +92,7 @@
 		62EABAC529A3F9470054F97A /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		62EABAC729A542C00054F97A /* LikeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeResult.swift; sourceTree = "<group>"; };
 		62EABAC929A54B220054F97A /* ImageListCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCellDelegate.swift; sourceTree = "<group>"; };
+		62EABACB29AE8C4C0054F97A /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		62EB1D9129756285002A198E /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		62EB1D94297DD6AE002A198E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		62EB1D97297DE071002A198E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				62A02087298C67DD0060664E /* UrlSession+Extenstions.swift */,
 				62EABAA2299A6D090054F97A /* UIBlockingProgressHUD.swift */,
 				62EABAC529A3F9470054F97A /* Array+Extensions.swift */,
+				62EABACB29AE8C4C0054F97A /* DateHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62EABAC429A36F730054F97A /* PhotoResult.swift in Sources */,
+				62EABACC29AE8C4D0054F97A /* DateHelper.swift in Sources */,
 				62A02084298C5C620060664E /* UrlRequest+Extensions.swift in Sources */,
 				62A0205D2987D1280060664E /* AuthViewController.swift in Sources */,
 				62C37877294CA31F0014BCD7 /* ImageListViewController.swift in Sources */,
