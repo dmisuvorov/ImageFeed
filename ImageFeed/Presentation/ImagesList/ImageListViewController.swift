@@ -33,11 +33,10 @@ class ImageListViewController: UIViewController {
         if segue.identifier == showSingleImageSegueIdentifier {
             let viewController = segue.destination as? SingleImageViewController
             guard let indexPath = sender as? IndexPath,
-                  let imageName = photos[safe: indexPath.row]?.largeImageURL else { return }
+                  let imageName = photos[safe: indexPath.row]?.largeImageURL,
+                  let largeImageURL = URL(string: imageName) else { return }
             
-            //            let image = UIImage(named: "\(imageName)_full_size") ?? UIImage(named: imageName)
-            //            viewController.image = image
-            //TODO: - показ картинки в большом разрешении
+            viewController?.loadAndShowImage(url: largeImageURL)
         } else {
             super.prepare(for: segue, sender: sender)
         }
