@@ -12,7 +12,7 @@ final class ImagesListService {
     
     private (set) var photos: [Photo] = []
     private var lastLoadedPage: Int = 0
-    private var currentUrlSessionState: FetchPhotosState?
+    private var isReadyFeatchPhotos = true
     
     private let urlSession = URLSession.shared
     private let oAuth2TokenStorage = OAuth2TokenStorage.shared
@@ -20,28 +20,26 @@ final class ImagesListService {
     private init() {}
     
     func fetchPhotosNextPage() {
-        guard currentUrlSessionState == nil,
-              currentUrlSessionState != FetchPhotosState.inProgress,
+        guard isReadyFeatchPhotos,
               let token = oAuth2TokenStorage.token,
               let request = photosRequest(token: token, page: lastLoadedPage + 1) else { return }
         
         let task = urlSession.makeUrlSessionTask(for: request) { [weak self] (result: Result<[PhotoResult], Error>) in
             guard let self = self else { return }
             DispatchQueue.main.async {
+                self.isReadyFeatchPhotos = true
                 switch result {
                 case .success(let photoResult):
                     let newPhotos = photoResult.map { $0.convertToPhoto() }
                     self.photos.append(contentsOf: newPhotos)
                     NotificationCenter.default.post(name: ImagesListService.didChangeNotification, object: self)
-                    self.currentUrlSessionState = FetchPhotosState.success
                     self.lastLoadedPage += 1
                 case .failure:
-                    self.currentUrlSessionState = FetchPhotosState.failure
                     self.fetchPhotosNextPage()
                 }
             }
         }
-        currentUrlSessionState = FetchPhotosState.inProgress
+        isReadyFeatchPhotos = false
         task.resume()
     }
     
