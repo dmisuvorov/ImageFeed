@@ -27,6 +27,7 @@ class ImageListViewController: UIViewController {
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
         configureObserver()
+        imagesListService.fetchPhotosNextPage()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -36,7 +37,7 @@ class ImageListViewController: UIViewController {
                   let imageName = photos[safe: indexPath.row]?.largeImageURL,
                   let largeImageURL = URL(string: imageName) else { return }
             
-            viewController?.loadAndShowImage(url: largeImageURL)
+            viewController?.imageURL = largeImageURL
         } else {
             super.prepare(for: segue, sender: sender)
         }

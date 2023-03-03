@@ -7,7 +7,14 @@
 
 import UIKit
 
-class SingleImageViewController: UIViewController {
+final class SingleImageViewController: UIViewController {
+    var imageURL: URL? {
+        didSet {
+            guard isViewLoaded else { return }
+            loadAndShowImage(url: imageURL)
+        }
+    }
+    
     private lazy var errorAlertPresenter = AlertPresenter(viewController: self)
     
     @IBOutlet private var imageView: UIImageView!
@@ -31,9 +38,11 @@ class SingleImageViewController: UIViewController {
         super.viewDidLoad()
         scrollView.minimumZoomScale = 0.1
         scrollView.maximumZoomScale = 1.25
+        loadAndShowImage(url: imageURL)
     }
     
-    func loadAndShowImage(url: URL) {
+    func loadAndShowImage(url: URL?) {
+        guard let url = url else { return }
         UIBlockingProgressHUD.show()
         imageView.kf.setImage(with: url) { [weak self] result in
             UIBlockingProgressHUD.dismiss()
