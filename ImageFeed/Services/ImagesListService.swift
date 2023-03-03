@@ -50,7 +50,7 @@ final class ImagesListService {
               let photo = self.photos[safe: index] else { return }
         let newPhoto = photo.copy { $0.isLiked = isLike }
     
-        let task = urlSession.makeUrlSessionTask(for: request) { [weak self] (result: Result<[LikeResult], Error>) in
+        let task = urlSession.makeUrlSessionTask(for: request) { [weak self] (result: Result<LikeResult, Error>) in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {

@@ -91,7 +91,7 @@ class ProfileViewController : UIViewController {
     @objc private func onLogoutButtonClick() {
         alertPresenter.presentAlert(
             title: "Пока, пока!",
-            message: "Уверены сто хотите выйти?",
+            message: "Уверены что хотите выйти?",
             firstButtonTitle: "Да",
             firstButtonAction: { self.logout() },
             secondButtonTitle: "Нет",

@@ -10,16 +10,11 @@ import Kingfisher
 
 class ImageListViewController: UIViewController {
     private lazy var photos: [Photo] = []
+    private lazy var alertPresenter = AlertPresenter(viewController: self)
+    
     private let showSingleImageSegueIdentifier = "ShowSingleImage"
     private let imagesListService = ImagesListService.shared
     private var imagesListServiceObserver: NSObjectProtocol?
-    
-    private lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        formatter.timeStyle = .none
-        return formatter
-    }()
     
     @IBOutlet private var tableView: UITableView!
     
@@ -133,7 +128,15 @@ extension ImageListViewController: ImageListCellDelegate {
                 UIBlockingProgressHUD.dismiss()
             case .failure:
                 UIBlockingProgressHUD.dismiss()
-                // TODO: Показать ошибку с использованием UIAlertController
+            
+                self.alertPresenter.presentAlert(
+                    title: "Что-то пошло не так(",
+                    message: "Попробовать ещё раз?",
+                    firstButtonTitle: "Да",
+                    firstButtonAction: { self.imageListCellDidTapLike(cell) },
+                    secondButtonTitle: "Нет",
+                    secondButtonAction: { }
+                )
             }
         }
     }

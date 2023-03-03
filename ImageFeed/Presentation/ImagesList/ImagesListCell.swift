@@ -28,7 +28,7 @@ final class ImagesListCell: UITableViewCell {
         cellImage.kf.cancelDownloadTask()
         cellImage.image = nil
         dateLabel.text = nil
-        //TODO: - сброс лайков
+        setIsLiked(false)
     }
     
     func setIsLiked(_ isLiked: Bool) {
