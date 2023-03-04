@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class ProfileViewController : UIViewController {
+final class ProfileViewController : UIViewController {
     private let profileService = ProfileService.shared
     private let oAuth2TokenStorage = OAuth2TokenStorage.shared
     private let avatarPlaceholder = UIImage(named: "avatar_place_holder")

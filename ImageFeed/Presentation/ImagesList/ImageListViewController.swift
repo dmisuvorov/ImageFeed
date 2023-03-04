@@ -8,7 +8,7 @@
 import UIKit
 import Kingfisher
 
-class ImageListViewController: UIViewController {
+final class ImageListViewController: UIViewController {
     private lazy var photos: [Photo] = []
     private lazy var alertPresenter = AlertPresenter(viewController: self)
     

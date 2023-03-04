@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class WebViewViewController : UIViewController {
+final class WebViewViewController : UIViewController {
     weak var delegate: WebViewViewControllerDelegate?
     
     @IBOutlet private var webView: WKWebView!
