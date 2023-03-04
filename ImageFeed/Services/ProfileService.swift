@@ -16,6 +16,8 @@ final class ProfileService {
     private var currentUrlSessionTask: URLSessionTask?
     private var lastToken: String?
     
+    private init() {}
+    
     func fetchProfile(_ token: String, completion: @escaping (Result<Profile, Error>) -> Void) {
         assert(Thread.isMainThread)
         guard lastToken != oAuth2TokenStorage.token,

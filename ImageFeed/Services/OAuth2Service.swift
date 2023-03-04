@@ -14,6 +14,8 @@ final class OAuth2Service {
     private var currentUrlSessionTask: URLSessionTask?
     private var lastCode: String?
     
+    private init() {}
+    
     func fetchAuthToken(
         code: String,
         completion: @escaping (Result<String, Error>) -> Void

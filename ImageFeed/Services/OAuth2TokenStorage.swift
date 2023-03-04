@@ -12,6 +12,8 @@ final class OAuth2TokenStorage {
     
     private let keychainWrapper = KeychainWrapper.standard
     
+    private init() {}
+    
     var token: String? {
         get {
             return keychainWrapper.string(forKey: Keys.token.rawValue)
