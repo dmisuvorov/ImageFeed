@@ -10,13 +10,13 @@ import UIKit
 final class AuthViewController : UIViewController {
     var delegate: AuthViewControllerDelegate?
     
-    private let ShowWebViewSegueId = "ShowWebView"
+    private let showWebViewSegueId = "ShowWebView"
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == ShowWebViewSegueId {
+        if segue.identifier == showWebViewSegueId {
             guard let webViewViewController = segue.destination as? WebViewViewController
             else {
-                assertionFailure("Failed to prepare for \(ShowWebViewSegueId)")
+                assertionFailure("Failed to prepare for \(showWebViewSegueId)")
                 return
             }
             
@@ -30,7 +30,6 @@ final class AuthViewController : UIViewController {
 extension AuthViewController: WebViewViewControllerDelegate {
     func webViewViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
         delegate?.authViewController(self, didAuthenticateWithCode: code)
-        vc.dismiss(animated: true)
     }
     
     func webViewViewControllerDidCancel(_ vc: WebViewViewController) {

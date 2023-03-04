@@ -58,7 +58,6 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
     //MARK: - AuthViewControllerDelegate
     func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String) {
         UIBlockingProgressHUD.show()
-        vc.dismiss(animated: true)
         dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
             self.fetchOAuthToken(code)
@@ -110,13 +109,12 @@ class SplashViewController : UIViewController, AuthViewControllerDelegate {
     private func fetchProfile(token: String) {
         profileService.fetchProfile(token) { [weak self] result in
             guard let self = self else { return }
+            UIBlockingProgressHUD.dismiss()
             switch result {
             case .success(let profile):
                 self.fetchProfileImageURL(username: profile.username)
-                UIBlockingProgressHUD.dismiss()
                 self.switchToTabBarController()
             case .failure:
-                UIBlockingProgressHUD.dismiss()
                 self.showErrrorAlert()
             }
         }
