@@ -18,6 +18,8 @@ final class ProfileImageService {
     private var currentUrlSessionTask: URLSessionTask?
     private var lastUsername: String?
     
+    private init() {}
+    
     func fetchProfileImageURL(username: String, _ completion: @escaping (Result<String, Error>) -> Void) {
         assert(Thread.isMainThread)
         guard lastUsername != username,

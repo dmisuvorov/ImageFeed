@@ -51,7 +51,6 @@ extension URLSession {
             }
             fulfillCompletion(Result.failure(NetworkError.httpStatusCode(statusCode)))
         }
-        task.resume()
         return task
     }
 }

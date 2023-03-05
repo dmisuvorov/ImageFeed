@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class WebViewViewController : UIViewController {
+final class WebViewViewController : UIViewController {
     weak var delegate: WebViewViewControllerDelegate?
     
     @IBOutlet private var webView: WKWebView!
@@ -82,5 +82,16 @@ extension WebViewViewController : WKNavigationDelegate {
             return codeItem.value
         }
         return nil
+    }
+}
+
+extension WebViewViewController {
+    static func clearData() {
+        HTTPCookieStorage.shared.removeCookies(since: Date.distantPast)
+        WKWebsiteDataStore.default().fetchDataRecords(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes()) { records in
+            records.forEach { record in
+                WKWebsiteDataStore.default().removeData(ofTypes: record.dataTypes, for: [record], completionHandler: {})
+            }
+        }
     }
 }
