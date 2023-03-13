@@ -9,13 +9,15 @@ import UIKit
 final class WebViewPresenter: WebViewPresenterProtocol {
     weak var view: WebViewViewControllerProtocol?
     
+    private let authConfiguration = AuthConfiguration.standard
+    
     func viewDidLoad() {
-        var urlComponents = URLComponents(string: Constants.unsplashAuthorizeURLString)!
+        var urlComponents = URLComponents(string: authConfiguration.unsplashAuthorizeURLString)!
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: Constants.accessKey),
-            URLQueryItem(name: "redirect_uri", value: Constants.redirectURI),
+            URLQueryItem(name: "client_id", value: authConfiguration.accessKey),
+            URLQueryItem(name: "redirect_uri", value: authConfiguration.redirectURI),
             URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: Constants.accessScope)
+            URLQueryItem(name: "scope", value: authConfiguration.accessScope)
         ]
         let url = urlComponents.url!
         let request = URLRequest(url: url)
