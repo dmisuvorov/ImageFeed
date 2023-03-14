@@ -286,7 +286,7 @@
         <!--Web View View Controller-->
         <scene sceneID="AbH-F3-UWJ">
             <objects>
-                <viewController id="aYS-iT-QtT" userLabel="Web View View Controller" customClass="WebViewViewController" customModule="ImageFeed" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewViewController" id="aYS-iT-QtT" userLabel="Web View View Controller" customClass="WebViewViewController" customModule="ImageFeed" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iaC-Rh-K78">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
