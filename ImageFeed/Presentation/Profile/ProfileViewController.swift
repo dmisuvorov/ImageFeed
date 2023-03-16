@@ -8,9 +8,9 @@
 import UIKit
 import Kingfisher
 
-final class ProfileViewController : UIViewController {
-    private let profileService = ProfileService.shared
-    private let oAuth2TokenStorage = OAuth2TokenStorage.shared
+final class ProfileViewController : UIViewController, ProfileViewControllerProtocol {
+    var presenter: ProfilePresenterProtocol?
+    
     private let avatarPlaceholder = UIImage(named: "avatar_place_holder")
     private var profileImageServiceObserver: NSObjectProtocol?
     
@@ -70,11 +70,39 @@ final class ProfileViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateProfileDetails(profile: profileService.profile)
+        presenter?.updateProfileDetails()
+        
         configureUI()
         configureObserver()
     }
+
+//MARK: - ProfileViewControllerProtocol
+    func setProfileDetails(name: String, nickname: String, bio: String?) {
+        nameLabel.text = name
+        nicknameLabel.text = nickname
+        statusLabel.text = bio
+    }
     
+    func setAvatar(url: URL) {
+        avatarImageView.kf.indicatorType = IndicatorType.activity
+        avatarImageView.kf.setImage(with: url, placeholder: avatarPlaceholder) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let imageResult):
+                self.avatarImageView.image = imageResult.image
+            case .failure:
+                self.avatarImageView.image = self.avatarPlaceholder
+            }
+        }
+    }
+    
+    func navigateToSplashController() {
+        window?.rootViewController = SplashViewController()
+        window?.makeKeyAndVisible()
+    }
+
+//MARK: - private func
     private func configureObserver() {
         profileImageServiceObserver = NotificationCenter
             .default
@@ -84,7 +112,7 @@ final class ProfileViewController : UIViewController {
                 queue: OperationQueue.main
             ) { [weak self] _ in
                 guard let self = self else { return }
-                self.updateAvatar()
+                self.presenter?.updateAvatar()
             }
     }
     
@@ -93,17 +121,10 @@ final class ProfileViewController : UIViewController {
             title: "Пока, пока!",
             message: "Уверены что хотите выйти?",
             firstButtonTitle: "Да",
-            firstButtonAction: { self.logout() },
+            firstButtonAction: { self.presenter?.onLogout() },
             secondButtonTitle: "Нет",
             secondButtonAction: { }
         )
-    }
-    
-    private func logout() {
-        oAuth2TokenStorage.token = ""
-        WebViewViewController.clearData()
-        window?.rootViewController = SplashViewController()
-        window?.makeKeyAndVisible()
     }
     
     private func configureUI() {
@@ -132,32 +153,5 @@ final class ProfileViewController : UIViewController {
             equal(\.topAnchor, \.safeAreaLayoutGuide.topAnchor, to: 56),
             equal(\.trailingAnchor, to: -16)
         ])
-    }
-    
-    private func updateProfileDetails(profile: Profile?) {
-        guard let profile = profile else { preconditionFailure("Unable to get user profile") }
-        nameLabel.text = profile.name
-        nicknameLabel.text = profile.loginName
-        statusLabel.text = profile.bio
-        
-        updateAvatar()
-    }
-    
-    private func updateAvatar() {
-        guard
-            let profileImageURL = ProfileImageService.shared.avatarURL,
-            let url = URL(string: profileImageURL)
-        else { return }
-        avatarImageView.kf.indicatorType = IndicatorType.activity
-        avatarImageView.kf.setImage(with: url, placeholder: avatarPlaceholder) { [weak self] result in
-            guard let self = self else { return }
-            
-            switch result {
-            case .success(let imageResult):
-                self.avatarImageView.image = imageResult.image
-            case .failure:
-                self.avatarImageView.image = self.avatarPlaceholder
-            }
-        }
     }
 }
