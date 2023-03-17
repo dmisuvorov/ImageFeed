@@ -9,8 +9,19 @@ import UIKit
 final class ProfilePresenter: ProfilePresenterProtocol {
     var view: ProfileViewControllerProtocol?
     
-    private let profileService = ProfileService.shared
-    private let oAuth2TokenStorage = OAuth2TokenStorage.shared
+    private let profileService: ProfileServiceProtocol
+    private let profileImageService: ProfileImageServiceProtocol
+    private var oAuth2TokenStorage: OAuth2TokenStorageProtocol
+    
+    init(
+        profileService: ProfileServiceProtocol = ProfileService.shared,
+        profileImageService: ProfileImageServiceProtocol = ProfileImageService.shared,
+        oAuth2TokenStorage: OAuth2TokenStorageProtocol = OAuth2TokenStorage.shared
+    ) {
+        self.profileService = profileService
+        self.profileImageService = profileImageService
+        self.oAuth2TokenStorage = oAuth2TokenStorage
+    }
     
     func updateProfileDetails() {
         guard let profile = profileService.profile else { return }
@@ -21,7 +32,7 @@ final class ProfilePresenter: ProfilePresenterProtocol {
     
     func updateAvatar() {
         guard
-            let profileImageURL = ProfileImageService.shared.avatarURL,
+            let profileImageURL = profileImageService.avatarURL,
             let url = URL(string: profileImageURL)
         else { return }
         

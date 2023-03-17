@@ -58,6 +58,9 @@
 		62EABAFB29C377E50054F97A /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABAFA29C377E50054F97A /* ProfilePresenter.swift */; };
 		62EABAFD29C378170054F97A /* ProfilePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABAFC29C378170054F97A /* ProfilePresenterProtocol.swift */; };
 		62EABAFF29C378450054F97A /* ProfileViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABAFE29C378450054F97A /* ProfileViewControllerProtocol.swift */; };
+		62EABB0129C3C6750054F97A /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABB0029C3C6750054F97A /* ProfileTests.swift */; };
+		62EABB0329C3C6C40054F97A /* ProfilePresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABB0229C3C6C40054F97A /* ProfilePresenterSpy.swift */; };
+		62EABB0529C3C81D0054F97A /* ProfileViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABB0429C3C81D0054F97A /* ProfileViewControllerSpy.swift */; };
 		62EB1D9229756285002A198E /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D9129756285002A198E /* SingleImageViewController.swift */; };
 		62EB1D95297DD6AE002A198E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D94297DD6AE002A198E /* ProfileViewController.swift */; };
 		62EB1D98297DE072002A198E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D97297DE071002A198E /* Colors.swift */; };
@@ -138,6 +141,9 @@
 		62EABAFA29C377E50054F97A /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		62EABAFC29C378170054F97A /* ProfilePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenterProtocol.swift; sourceTree = "<group>"; };
 		62EABAFE29C378450054F97A /* ProfileViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerProtocol.swift; sourceTree = "<group>"; };
+		62EABB0029C3C6750054F97A /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
+		62EABB0229C3C6C40054F97A /* ProfilePresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenterSpy.swift; sourceTree = "<group>"; };
+		62EABB0429C3C81D0054F97A /* ProfileViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerSpy.swift; sourceTree = "<group>"; };
 		62EB1D9129756285002A198E /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		62EB1D94297DD6AE002A198E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		62EB1D97297DE071002A198E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -335,6 +341,9 @@
 				62EABAE329C089550054F97A /* WebViewPresenterSpy.swift */,
 				62EABAE529C08B740054F97A /* WebViewViewControllerSpy.swift */,
 				62EABAE729C08C170054F97A /* AuthHelperTests.swift */,
+				62EABB0029C3C6750054F97A /* ProfileTests.swift */,
+				62EABB0229C3C6C40054F97A /* ProfilePresenterSpy.swift */,
+				62EABB0429C3C81D0054F97A /* ProfileViewControllerSpy.swift */,
 			);
 			path = ImageFeedTests;
 			sourceTree = "<group>";
@@ -600,7 +609,10 @@
 				62EABADD29C087610054F97A /* WebViewTests.swift in Sources */,
 				62EABAE829C08C170054F97A /* AuthHelperTests.swift in Sources */,
 				62EABAE629C08B740054F97A /* WebViewViewControllerSpy.swift in Sources */,
+				62EABB0129C3C6750054F97A /* ProfileTests.swift in Sources */,
+				62EABB0529C3C81D0054F97A /* ProfileViewControllerSpy.swift in Sources */,
 				62EABAE429C089550054F97A /* WebViewPresenterSpy.swift in Sources */,
+				62EABB0329C3C6C40054F97A /* ProfilePresenterSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

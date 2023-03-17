@@ -6,7 +6,7 @@
 //
 import UIKit
 
-protocol ProfileViewControllerProtocol {
+public protocol ProfileViewControllerProtocol {
     var presenter: ProfilePresenterProtocol? { get set }
     func setProfileDetails(name: String, nickname: String, bio: String?)
     func setAvatar(url: URL)

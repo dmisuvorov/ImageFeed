@@ -5,7 +5,7 @@
 //  Created by Суворов Дмитрий Владимирович on 16.03.2023.
 //
 
-protocol ProfilePresenterProtocol {
+public protocol ProfilePresenterProtocol {
     var view: ProfileViewControllerProtocol? { get set }
     
     func updateProfileDetails()
