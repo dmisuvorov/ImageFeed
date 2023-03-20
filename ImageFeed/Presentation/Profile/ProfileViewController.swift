@@ -120,7 +120,9 @@ final class ProfileViewController : UIViewController, ProfileViewControllerProto
         alertPresenter.presentAlert(
             title: "Пока, пока!",
             message: "Уверены что хотите выйти?",
+            accessibilityId: "Bye bye!",
             firstButtonTitle: "Да",
+            firstButtonAccessibilityId: "Yes",
             firstButtonAction: { self.presenter?.onLogout() },
             secondButtonTitle: "Нет",
             secondButtonAction: { }
