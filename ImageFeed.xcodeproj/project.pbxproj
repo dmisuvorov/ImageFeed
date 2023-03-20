@@ -64,6 +64,9 @@
 		62EABB0729C64F070054F97A /* ImageListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABB0629C64F060054F97A /* ImageListPresenter.swift */; };
 		62EABB0929C650C10054F97A /* ImageListPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABB0829C650C10054F97A /* ImageListPresenterProtocol.swift */; };
 		62EABB0B29C655960054F97A /* ImageListViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABB0A29C655960054F97A /* ImageListViewControllerProtocol.swift */; };
+		62EABB0D29C869AA0054F97A /* ImageListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABB0C29C869AA0054F97A /* ImageListTests.swift */; };
+		62EABB0F29C8A4180054F97A /* ImageListPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABB0E29C8A4170054F97A /* ImageListPresenterSpy.swift */; };
+		62EABB1129C8A89F0054F97A /* ImageListViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EABB1029C8A89F0054F97A /* ImageListViewControllerSpy.swift */; };
 		62EB1D9229756285002A198E /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D9129756285002A198E /* SingleImageViewController.swift */; };
 		62EB1D95297DD6AE002A198E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D94297DD6AE002A198E /* ProfileViewController.swift */; };
 		62EB1D98297DE072002A198E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EB1D97297DE071002A198E /* Colors.swift */; };
@@ -150,6 +153,9 @@
 		62EABB0629C64F060054F97A /* ImageListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListPresenter.swift; sourceTree = "<group>"; };
 		62EABB0829C650C10054F97A /* ImageListPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListPresenterProtocol.swift; sourceTree = "<group>"; };
 		62EABB0A29C655960054F97A /* ImageListViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewControllerProtocol.swift; sourceTree = "<group>"; };
+		62EABB0C29C869AA0054F97A /* ImageListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListTests.swift; sourceTree = "<group>"; };
+		62EABB0E29C8A4170054F97A /* ImageListPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListPresenterSpy.swift; sourceTree = "<group>"; };
+		62EABB1029C8A89F0054F97A /* ImageListViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewControllerSpy.swift; sourceTree = "<group>"; };
 		62EB1D9129756285002A198E /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 		62EB1D94297DD6AE002A198E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		62EB1D97297DE071002A198E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -353,6 +359,9 @@
 				62EABB0029C3C6750054F97A /* ProfileTests.swift */,
 				62EABB0229C3C6C40054F97A /* ProfilePresenterSpy.swift */,
 				62EABB0429C3C81D0054F97A /* ProfileViewControllerSpy.swift */,
+				62EABB0C29C869AA0054F97A /* ImageListTests.swift */,
+				62EABB0E29C8A4170054F97A /* ImageListPresenterSpy.swift */,
+				62EABB1029C8A89F0054F97A /* ImageListViewControllerSpy.swift */,
 			);
 			path = ImageFeedTests;
 			sourceTree = "<group>";
@@ -619,11 +628,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				62EABADD29C087610054F97A /* WebViewTests.swift in Sources */,
+				62EABB0D29C869AA0054F97A /* ImageListTests.swift in Sources */,
+				62EABB1129C8A89F0054F97A /* ImageListViewControllerSpy.swift in Sources */,
 				62EABAE829C08C170054F97A /* AuthHelperTests.swift in Sources */,
 				62EABAE629C08B740054F97A /* WebViewViewControllerSpy.swift in Sources */,
 				62EABB0129C3C6750054F97A /* ProfileTests.swift in Sources */,
 				62EABB0529C3C81D0054F97A /* ProfileViewControllerSpy.swift in Sources */,
 				62EABAE429C089550054F97A /* WebViewPresenterSpy.swift in Sources */,
+				62EABB0F29C8A4180054F97A /* ImageListPresenterSpy.swift in Sources */,
 				62EABB0329C3C6C40054F97A /* ProfilePresenterSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
