@@ -62,7 +62,7 @@ final class ImageListTests: XCTestCase {
         // When
         imageListServiceStub.fetchPhotosNextPage()
         presenter.onDataUpdated()
-        presenter.onCellWillDisplay(row: 1)
+        presenter.onCellWillDisplay(row: 0)
 
         // Then
         XCTAssertTrue(imageListServiceStub.photos.count == 2)

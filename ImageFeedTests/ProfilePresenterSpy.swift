@@ -24,6 +24,4 @@ final class ProfilePresenterSpy: ProfilePresenterProtocol {
     func onLogout() {
         navigateToSplashControllerCalled = true
     }
-    
-    
 }

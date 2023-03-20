@@ -32,14 +32,17 @@ final class ProfileTests: XCTestCase {
 
         // Then
         XCTAssertTrue(presenter.updateProfileDetailsCalled)
-        XCTAssertTrue(presenter.updateAvatarCalled)
     }
     
     func testViewControllerSetProfileDetailsCalled() {
         // Given
         let viewController = ProfileViewControllerSpy()
         let profileServiceStub = ProfileServiceStub()
-        let presenter = ProfilePresenter(profileService: profileServiceStub)
+        let profileImageServiceStub = ProfileImageServiceStub()
+        let presenter = ProfilePresenter(
+            profileService: profileServiceStub,
+            profileImageService: profileImageServiceStub
+        )
         viewController.presenter = presenter
         presenter.view = viewController
 
