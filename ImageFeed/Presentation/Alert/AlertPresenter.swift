@@ -16,20 +16,24 @@ final class AlertPresenter {
     
     func presentAlert(title: String,
                       message: String,
+                      accessibilityId: String? = nil,
                       firstButtonTitle: String,
+                      firstButtonAccessibilityId: String? = nil,
                       firstButtonAction: @escaping (() -> Void),
                       secondButtonTitle: String? = nil,
+                      secondButtonAccessibilityId: String? = nil,
                       secondButtonAction: (() -> Void)? = nil
     ) {
 
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
-
+        if accessibilityId != nil { alert.view.accessibilityIdentifier = accessibilityId }
         let firstAction = UIAlertAction(title: firstButtonTitle, style: .default) { _ in
             alert.dismiss(animated: true)
             firstButtonAction()
         }
+        if firstButtonAccessibilityId != nil { firstAction.accessibilityLabel = firstButtonAccessibilityId }
         alert.addAction(firstAction)
 
         if let secondButtonTitle = secondButtonTitle, let secondButtonAction = secondButtonAction {
@@ -37,6 +41,7 @@ final class AlertPresenter {
                 alert.dismiss(animated: true)
                 secondButtonAction()
             }
+            if secondButtonAccessibilityId != nil { secondAction.accessibilityLabel = secondButtonAccessibilityId }
             alert.addAction(secondAction)
         }
 

@@ -13,7 +13,7 @@ extension URLRequest {
         path: String,
         httpMethod: String,
         queryItems: [URLQueryItem]? = nil,
-        baseURL: URL = Constants.defaultBaseURL
+        baseURL: URL = AuthConfiguration.standard.defaultBaseURL
     ) -> URLRequest? {
         guard var url = URL(string: path, relativeTo: baseURL) else {
             assertionFailure("URL \(baseURL)\\\(path) is not correct")

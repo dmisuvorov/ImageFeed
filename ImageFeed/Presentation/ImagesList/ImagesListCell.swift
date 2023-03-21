@@ -13,13 +13,21 @@ final class ImagesListCell: UITableViewCell {
     
     private lazy var likeButtonOn = UIImage(named: "like_button_on")
     private lazy var likeButtonOff = UIImage(named: "like_button_off")
+    private lazy var imagePlaceholder = UIImage(named: "photo_place_holder")
     
-    @IBOutlet var cellImage: UIImageView!
-    @IBOutlet var likeButton: UIButton!
-    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet
+    private var cellImage: UIImageView!
+    
+    @IBOutlet
+    private var likeButton: UIButton!
+    
+    @IBOutlet
+    private var dateLabel: UILabel!
+    
     static let reuseIdentifier = "ImagesListCell"
     
-    @IBAction func likeButtonClicked() {
+    @IBAction
+    private func likeButtonClicked() {
         delegate?.imageListCellDidTapLike(self)
     }
     
@@ -32,6 +40,19 @@ final class ImagesListCell: UITableViewCell {
     }
     
     func setIsLiked(_ isLiked: Bool) {
+        likeButton.accessibilityLabel = isLiked ? "like_button_on" : "like_button_off"
         likeButton.setImage(isLiked ? likeButtonOn : likeButtonOff, for: .normal)
+    }
+    
+    func setDate(_ date: String) {
+        dateLabel.text = date
+    }
+    
+    func setImage(url: URL,  _ completionHandler: @escaping () -> Void) {
+        cellImage.kf.indicatorType = IndicatorType.activity
+        cellImage.kf.setImage(
+            with: url,
+            placeholder: imagePlaceholder
+        ) { _ in completionHandler() }
     }
 }

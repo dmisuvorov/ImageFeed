@@ -228,6 +228,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwa-px-Afv" userLabel="log in Button">
                                 <rect key="frame" x="16" y="760" width="398" height="48"/>
                                 <color key="backgroundColor" name="YP White"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Authenticate" label="Authenticate"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="0gN-4I-5F2"/>
                                 </constraints>
@@ -286,7 +287,7 @@
         <!--Web View View Controller-->
         <scene sceneID="AbH-F3-UWJ">
             <objects>
-                <viewController id="aYS-iT-QtT" userLabel="Web View View Controller" customClass="WebViewViewController" customModule="ImageFeed" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebViewViewController" id="aYS-iT-QtT" userLabel="Web View View Controller" customClass="WebViewViewController" customModule="ImageFeed" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iaC-Rh-K78">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -6,13 +6,21 @@
 //
 import UIKit
 
-final class ImagesListService {
+protocol ImagesListServiceProtocol {
+    var photos: [Photo] { get }
+    
+    func fetchPhotosNextPage()
+    
+    func changeLike(photoId: String, isLike: Bool, _ completion: @escaping (Result<Void, Error>) -> Void)
+}
+
+final class ImagesListService : ImagesListServiceProtocol {
     static let shared = ImagesListService()
     static let didChangeNotification = Notification.Name(rawValue: "ImagesListServiceDidChange")
     
     private (set) var photos: [Photo] = []
     private var lastLoadedPage: Int = 0
-    private var isReadyFeatchPhotos = true
+    private var isReadyFetchPhotos = true
     
     private let urlSession = URLSession.shared
     private let oAuth2TokenStorage = OAuth2TokenStorage.shared
@@ -20,14 +28,14 @@ final class ImagesListService {
     private init() {}
     
     func fetchPhotosNextPage() {
-        guard isReadyFeatchPhotos,
+        guard isReadyFetchPhotos,
               let token = oAuth2TokenStorage.token,
               let request = photosRequest(token: token, page: lastLoadedPage + 1) else { return }
         
         let task = urlSession.makeUrlSessionTask(for: request) { [weak self] (result: Result<[PhotoResult], Error>) in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                self.isReadyFeatchPhotos = true
+                self.isReadyFetchPhotos = true
                 switch result {
                 case .success(let photoResult):
                     let newPhotos = photoResult.map { $0.convertToPhoto() }
@@ -39,7 +47,7 @@ final class ImagesListService {
                 }
             }
         }
-        isReadyFeatchPhotos = false
+        isReadyFetchPhotos = false
         task.resume()
     }
     
@@ -83,10 +91,4 @@ final class ImagesListService {
         request?.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return request
     }
-}
-
-private enum FetchPhotosState {
-    case success
-    case failure
-    case inProgress
 }
